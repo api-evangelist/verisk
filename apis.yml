@@ -1,0 +1,19 @@
+aid: verisk
+url: https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/apis.yml
+apis:
+- aid: verisk:verisk-api
+  name: Verisk / ISO Insurance Analytics API
+  tags:
+  - Insurance
+  - Risk
+  - Analytics
+  - Actuarial
+  - Rating
+  image: https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/image.png
+  humanURL: https://www.verisk.com/
+  baseURL: https://api.verisk.example.com
+  properties:
+  - url: https://www.verisk.com/
+    type: Documentation
+  description: >-
+    Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs. APIs deliver loss cost data, risk classification, catastrophe modeling, and claims analytics for underwriting, pricing, and exposure management across P&C insurance.
