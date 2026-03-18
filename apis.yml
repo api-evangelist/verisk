@@ -17,3 +17,17 @@ apis:
     type: Documentation
   description: >-
     Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs. APIs deliver loss cost data, risk classification, catastrophe modeling, and claims analytics for underwriting, pricing, and exposure management across P&C insurance.
+
+common:
+- url: https://www.verisk.com/
+  type: Website
+- url: https://www.verisk.com/
+  type: Portal
+- url: https://www.verisk.com/blog/
+  type: Blog
+
+maintainers:
+- name: Kin Lane
+  email: kin@apievangelist.com
+
+modified: '2026-03-18'
