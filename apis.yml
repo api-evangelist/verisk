@@ -15,6 +15,8 @@ apis:
   properties:
   - url: https://www.verisk.com/
     type: Documentation
+  - url: openapi/verisk-insurance-analytics-openapi.yml
+    type: OpenAPI
   description: >-
     Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs. APIs deliver loss cost data, risk classification, catastrophe modeling, and claims analytics for underwriting, pricing, and exposure management across P&C insurance.
 
@@ -25,6 +27,10 @@ common:
   type: Portal
 - url: https://www.verisk.com/blog/
   type: Blog
+- url: json-schema/verisk-property-risk-schema.json
+  type: JSONSchema
+- url: json-ld/verisk-context.jsonld
+  type: JSONLDContext
 
 maintainers:
 - name: Kin Lane

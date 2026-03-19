@@ -1,0 +1,514 @@
+openapi: 3.1.0
+info:
+  title: Verisk Insurance Analytics API
+  description: >-
+    Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property
+    analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk
+    classification, catastrophe modeling, property data, claims analytics, and
+    underwriting data services for insurance pricing, reserving, and exposure management.
+  version: "1.0"
+  contact:
+    name: Verisk Support
+    url: https://www.verisk.com/contact/
+  license:
+    name: Verisk Terms of Service
+    url: https://www.verisk.com/terms-of-use/
+servers:
+  - url: https://api.verisk.com/insurance/v1
+    description: Verisk Insurance Analytics API
+
+security:
+  - BearerAuth: []
+  - ApiKeyHeader: []
+
+tags:
+  - name: Property
+    description: Property risk data and analytics
+  - name: Risk Scoring
+    description: Insurance risk scores and rating factors
+  - name: Catastrophe
+    description: Catastrophe modeling and peril data
+  - name: Claims
+    description: Claims analytics and benchmarking
+  - name: Underwriting
+    description: Underwriting data services
+
+paths:
+  /property/risk/{propertyId}:
+    get:
+      operationId: getPropertyRisk
+      summary: Get property risk assessment
+      description: >-
+        Returns comprehensive risk data for a specific property including construction,
+        occupancy, fire protection class, ISO rating, and hazard scores for fire,
+        wind, hail, flood, and earthquake exposures.
+      tags:
+        - Property
+      parameters:
+        - name: propertyId
+          in: path
+          required: true
+          description: Property identifier (address or ISO property ID)
+          schema:
+            type: string
+          example: "PROP-123456"
+        - name: includePerils
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              enum: [FIRE, WIND, HAIL, FLOOD, EARTHQUAKE, WILDFIRE, LIGHTNING]
+          description: Peril types to include in response
+        - name: asOfDate
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Historical risk assessment date
+      responses:
+        '200':
+          description: Property risk assessment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyRisk'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Property not found
+
+  /property/lookup:
+    post:
+      operationId: lookupPropertyByAddress
+      summary: Look up property by address
+      description: >-
+        Resolves a street address to a property record and returns risk data.
+        Supports geocoding to USGS coordinates and ISO property identification.
+      tags:
+        - Property
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressLookupRequest'
+      responses:
+        '200':
+          description: Property lookup result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyLookupResponse'
+        '400':
+          description: Invalid address format
+
+  /risk/scores:
+    post:
+      operationId: getRiskScores
+      summary: Get insurance risk scores
+      description: >-
+        Returns risk scores for properties, policies, or portfolios. Includes
+        ISO fire protection classification, building code effectiveness grading,
+        and commercial/personal lines risk scores.
+      tags:
+        - Risk Scoring
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskScoreRequest'
+      responses:
+        '200':
+          description: Risk scores
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskScoreResponse'
+
+  /risk/fire-protection-class:
+    get:
+      operationId: getFireProtectionClass
+      summary: Get ISO Fire Protection Class (PPC)
+      description: >-
+        Returns the ISO Public Protection Classification (PPC) grade for a
+        location, which measures a community's fire suppression capability.
+        PPC grades range from 1 (best) to 10.
+      tags:
+        - Risk Scoring
+      parameters:
+        - name: latitude
+          in: query
+          required: true
+          schema:
+            type: number
+          example: 36.1699
+        - name: longitude
+          in: query
+          required: true
+          schema:
+            type: number
+          example: -115.1398
+        - name: constructionType
+          in: query
+          schema:
+            type: string
+            enum: [FRAME, MASONRY, FIRE_RESISTIVE, MODIFIED_FIRE_RESISTIVE, JOISTED_MASONRY, NON_COMBUSTIBLE]
+          description: ISO construction class
+      responses:
+        '200':
+          description: Fire protection class data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FireProtectionClass'
+
+  /catastrophe/peril-scores:
+    post:
+      operationId: getPerilScores
+      summary: Get catastrophe peril scores
+      description: >-
+        Returns catastrophe exposure scores for natural hazard perils including
+        hurricane, tornado, hail, wildfire, earthquake, and flood for a list
+        of locations. Used for catastrophe risk management and PML estimation.
+      tags:
+        - Catastrophe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerilScoreRequest'
+      responses:
+        '200':
+          description: Peril exposure scores
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerilScoreResponse'
+
+  /claims/benchmarks:
+    get:
+      operationId: getClaimsBenchmarks
+      summary: Get claims benchmarking data
+      description: >-
+        Returns industry claims benchmarking data for loss frequency, loss severity,
+        and combined ratio metrics across lines of business, states, and risk segments.
+      tags:
+        - Claims
+      parameters:
+        - name: lineOfBusiness
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [HOMEOWNERS, AUTO, COMMERCIAL_AUTO, CGL, COMMERCIAL_PROPERTY, WORKERS_COMP]
+        - name: state
+          in: query
+          required: false
+          schema:
+            type: string
+            pattern: "^[A-Z]{2}$"
+          description: US state code
+        - name: year
+          in: query
+          schema:
+            type: integer
+            example: 2025
+        - name: metricType
+          in: query
+          schema:
+            type: string
+            enum: [FREQUENCY, SEVERITY, COMBINED_RATIO, LOSS_RATIO]
+      responses:
+        '200':
+          description: Claims benchmarking metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimsBenchmarks'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  schemas:
+    PropertyRisk:
+      type: object
+      properties:
+        propertyId:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        construction:
+          $ref: '#/components/schemas/ConstructionData'
+        fireProtection:
+          $ref: '#/components/schemas/FireProtectionClass'
+        perilScores:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              score:
+                type: integer
+                minimum: 1
+                maximum: 100
+              riskCategory:
+                type: string
+                enum: [VERY_LOW, LOW, MODERATE, HIGH, VERY_HIGH, EXTREME]
+              description:
+                type: string
+        lastUpdated:
+          type: string
+          format: date
+
+    ConstructionData:
+      type: object
+      properties:
+        yearBuilt:
+          type: integer
+        squareFootage:
+          type: integer
+        stories:
+          type: integer
+        constructionType:
+          type: string
+          enum: [FRAME, MASONRY, FIRE_RESISTIVE, MODIFIED_FIRE_RESISTIVE, JOISTED_MASONRY, NON_COMBUSTIBLE]
+        roofType:
+          type: string
+        occupancyType:
+          type: string
+          enum: [RESIDENTIAL, COMMERCIAL, INDUSTRIAL, MIXED_USE]
+        buildingCode:
+          type: string
+          description: Applicable building code version
+
+    FireProtectionClass:
+      type: object
+      properties:
+        ppcGrade:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: ISO Public Protection Classification grade
+        splitCode:
+          type: string
+          description: Split code (e.g., 4/9 for split classification)
+        fireDistrictName:
+          type: string
+        distanceToFireStation:
+          type: number
+          description: Distance to nearest responding fire station in miles
+        distanceToHydrant:
+          type: number
+          description: Distance to nearest fire hydrant in feet
+        communityName:
+          type: string
+        state:
+          type: string
+        lastSurveyDate:
+          type: string
+          format: date
+
+    AddressLookupRequest:
+      type: object
+      required:
+        - streetAddress
+        - city
+        - state
+      properties:
+        streetAddress:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          pattern: "^[A-Z]{2}$"
+        zipCode:
+          type: string
+        includeRiskData:
+          type: boolean
+          default: true
+        includePerils:
+          type: array
+          items:
+            type: string
+
+    PropertyLookupResponse:
+      type: object
+      properties:
+        matchQuality:
+          type: string
+          enum: [EXACT, INTERPOLATED, ZIP_CENTROID, CITY_CENTROID]
+        propertyId:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        riskData:
+          $ref: '#/components/schemas/PropertyRisk'
+
+    RiskScoreRequest:
+      type: object
+      required:
+        - locations
+        - scoreTypes
+      properties:
+        locations:
+          type: array
+          maxItems: 100
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              address:
+                $ref: '#/components/schemas/Address'
+              coordinates:
+                $ref: '#/components/schemas/Coordinates'
+        scoreTypes:
+          type: array
+          items:
+            type: string
+            enum: [FIRE_PROTECTION_CLASS, BUILDING_CODE_EFFECTIVENESS, FLOOD_ZONE, EARTHQUAKE_ZONE, WIND_ZONE]
+
+    RiskScoreResponse:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              scores:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    score:
+                      oneOf:
+                        - type: integer
+                        - type: string
+                        - type: number
+                    description:
+                      type: string
+
+    PerilScoreRequest:
+      type: object
+      required:
+        - locations
+        - perils
+      properties:
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              latitude:
+                type: number
+              longitude:
+                type: number
+        perils:
+          type: array
+          items:
+            type: string
+            enum: [HURRICANE, TORNADO, HAIL, WILDFIRE, EARTHQUAKE, FLOOD, WINTER_STORM, LIGHTNING]
+
+    PerilScoreResponse:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              perils:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    score:
+                      type: integer
+                      minimum: 1
+                      maximum: 100
+                    riskTier:
+                      type: string
+                      enum: [TIER_1, TIER_2, TIER_3, TIER_4, TIER_5]
+                    annualExceedanceProbability:
+                      type: number
+                      description: Annual probability of loss event
+
+    ClaimsBenchmarks:
+      type: object
+      properties:
+        lineOfBusiness:
+          type: string
+        state:
+          type: string
+        year:
+          type: integer
+        metrics:
+          type: object
+          properties:
+            frequency:
+              type: number
+              description: Claims frequency per 100 exposures
+            averageSeverity:
+              type: number
+              description: Average claim severity in USD
+            lossRatio:
+              type: number
+              description: Loss ratio as decimal (0.0-1.0+)
+            combinedRatio:
+              type: number
+        sampleSize:
+          type: integer
+          description: Number of policies in benchmark sample
+        source:
+          type: string
+          description: Data source and vintage
+
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          pattern: "^[A-Z]{2}$"
+        zipCode:
+          type: string
+        country:
+          type: string
+          default: "US"
+
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          minimum: -90
+          maximum: 90
+        longitude:
+          type: number
+          minimum: -180
+          maximum: 180

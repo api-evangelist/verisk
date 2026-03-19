@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "verisk": "https://www.verisk.com/vocab/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "PropertyRisk": "schema:Place",
+    "FireProtectionClass": "verisk:FireProtectionClass",
+    "PerilScore": "verisk:PerilScore",
+    "ConstructionData": "schema:Accommodation",
+    "ClaimsBenchmarks": "verisk:ClaimsBenchmarks",
+
+    "propertyId": "schema:identifier",
+    "address": {
+      "@id": "schema:address",
+      "@type": "schema:PostalAddress"
+    },
+    "coordinates": "schema:geo",
+    "lastUpdated": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:date"
+    },
+
+    "street": "schema:streetAddress",
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "zipCode": "schema:postalCode",
+    "country": "schema:addressCountry",
+
+    "latitude": {
+      "@id": "geo:lat",
+      "@type": "xsd:double"
+    },
+    "longitude": {
+      "@id": "geo:long",
+      "@type": "xsd:double"
+    },
+
+    "yearBuilt": {
+      "@id": "schema:yearBuilt",
+      "@type": "xsd:integer"
+    },
+    "squareFootage": "schema:floorSize",
+    "stories": "schema:numberOfFloors",
+    "constructionType": "schema:material",
+    "occupancyType": "schema:additionalType",
+
+    "ppcGrade": "verisk:ppcGrade",
+    "fireDistrictName": "schema:name",
+    "distanceToFireStation": "verisk:distanceToFireStation",
+    "distanceToHydrant": "verisk:distanceToHydrant",
+
+    "score": "verisk:riskScore",
+    "riskCategory": "verisk:riskCategory",
+    "annualExceedanceProbability": "verisk:exceedanceProbability",
+
+    "lineOfBusiness": "verisk:lineOfBusiness",
+    "frequency": "verisk:claimFrequency",
+    "averageSeverity": "verisk:averageClaimSeverity",
+    "lossRatio": "verisk:lossRatio"
+  }
+}
