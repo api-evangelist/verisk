@@ -22,17 +22,14 @@ security:
   - ApiKeyHeader: []
 
 tags:
-  - name: Property
-    description: Property risk data and analytics
-  - name: Risk Scoring
-    description: Insurance risk scores and rating factors
   - name: Catastrophe
     description: Catastrophe modeling and peril data
   - name: Claims
     description: Claims analytics and benchmarking
-  - name: Underwriting
-    description: Underwriting data services
-
+  - name: Property
+    description: Property risk data and analytics
+  - name: Risk Scoring
+    description: Insurance risk scores and rating factors
 paths:
   /property/risk/{propertyId}:
     get:
