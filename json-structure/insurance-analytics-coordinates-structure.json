@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-coordinates-structure.json",
+  "description": "Coordinates schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "type": "double",
+      "minimum": -90,
+      "maximum": 90,
+      "example": 36.1699
+    },
+    "longitude": {
+      "type": "double",
+      "minimum": -180,
+      "maximum": 180,
+      "example": -115.1398
+    }
+  },
+  "name": "Coordinates"
+}

@@ -1,0 +1,9 @@
+{
+  "yearBuilt": 2025,
+  "squareFootage": 100,
+  "stories": 100,
+  "constructionType": "FRAME",
+  "roofType": "FRAME",
+  "occupancyType": "RESIDENTIAL",
+  "buildingCode": "example-value"
+}

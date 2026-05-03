@@ -1,0 +1,187 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Verisk Insurance Underwriting"
+  description: "Unified capability for insurance underwriters to assess property risk, retrieve ISO fire protection classifications, score catastrophe peril exposures, and benchmark claims performance. Combines Verisk Insurance Analytics API operations into a single underwriting workflow for P&C insurance carriers."
+  tags:
+    - Insurance
+    - Underwriting
+    - Property Risk
+    - Catastrophe Modeling
+    - Claims
+    - Analytics
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VERISK_BEARER_TOKEN: VERISK_BEARER_TOKEN
+      VERISK_API_KEY: VERISK_API_KEY
+
+capability:
+  consumes:
+    - import: verisk-insurance-analytics
+      location: ./shared/insurance-analytics.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: verisk-underwriting-api
+      description: "Unified REST API for insurance underwriting workflows using Verisk data."
+      resources:
+        - path: /v1/properties/{propertyId}/risk
+          name: property-risk
+          description: "Property risk assessment by property ID"
+          operations:
+            - method: GET
+              name: get-property-risk
+              description: "Get comprehensive property risk assessment"
+              call: "verisk-insurance-analytics.get-property-risk"
+              with:
+                propertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/properties/lookup
+          name: property-lookup
+          description: "Property lookup by address"
+          operations:
+            - method: POST
+              name: lookup-property
+              description: "Lookup property risk data by street address"
+              call: "verisk-insurance-analytics.lookup-property-by-address"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/risk-scores
+          name: risk-scores
+          description: "Insurance risk scores for underwriting"
+          operations:
+            - method: POST
+              name: get-risk-scores
+              description: "Get risk scores for properties or portfolios"
+              call: "verisk-insurance-analytics.get-risk-scores"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/fire-protection-class
+          name: fire-protection-class
+          description: "ISO Fire Protection Classification"
+          operations:
+            - method: GET
+              name: get-fire-protection-class
+              description: "Get ISO PPC grade for a location"
+              call: "verisk-insurance-analytics.get-fire-protection-class"
+              with:
+                latitude: "rest.latitude"
+                longitude: "rest.longitude"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/peril-scores
+          name: peril-scores
+          description: "Catastrophe peril exposure scores"
+          operations:
+            - method: POST
+              name: get-peril-scores
+              description: "Get catastrophe peril scores for locations"
+              call: "verisk-insurance-analytics.get-peril-scores"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/claims/benchmarks
+          name: claims-benchmarks
+          description: "Industry claims benchmarking"
+          operations:
+            - method: GET
+              name: get-claims-benchmarks
+              description: "Get industry claims benchmarking metrics"
+              call: "verisk-insurance-analytics.get-claims-benchmarks"
+              with:
+                lineOfBusiness: "rest.lineOfBusiness"
+                state: "rest.state"
+                year: "rest.year"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: verisk-underwriting-mcp
+      transport: http
+      description: "MCP server for AI-assisted insurance underwriting using Verisk data."
+      tools:
+        - name: get-property-risk
+          description: "Get comprehensive property risk assessment including construction, fire protection, and hazard scores for underwriting a specific property"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verisk-insurance-analytics.get-property-risk"
+          with:
+            propertyId: "tools.propertyId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: lookup-property-by-address
+          description: "Resolve a street address to a property record and retrieve Verisk risk data for underwriting"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verisk-insurance-analytics.lookup-property-by-address"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-risk-scores
+          description: "Get ISO fire protection, building code effectiveness, flood zone, earthquake zone, and wind zone risk scores for properties or portfolios"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verisk-insurance-analytics.get-risk-scores"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-fire-protection-class
+          description: "Get ISO Public Protection Classification (PPC) grade for a geographic location to assess fire suppression capability"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verisk-insurance-analytics.get-fire-protection-class"
+          with:
+            latitude: "tools.latitude"
+            longitude: "tools.longitude"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-peril-scores
+          description: "Get catastrophe exposure scores for hurricane, tornado, hail, wildfire, earthquake, and flood perils for a list of locations"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verisk-insurance-analytics.get-peril-scores"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-claims-benchmarks
+          description: "Get industry claims benchmarking data for loss frequency, severity, combined ratio, and loss ratio by line of business and state"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verisk-insurance-analytics.get-claims-benchmarks"
+          with:
+            lineOfBusiness: "tools.lineOfBusiness"
+            state: "tools.state"
+            year: "tools.year"
+          outputParameters:
+            - type: object
+              mapping: "$."

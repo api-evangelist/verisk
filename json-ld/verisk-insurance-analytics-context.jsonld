@@ -1,0 +1,194 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "verisk": "https://verisk.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Address": "verisk:Address",
+    "Verisk Property Risk Assessment": "verisk:Verisk Property Risk Assessment",
+    "PerilScoreRequest": "verisk:PerilScoreRequest",
+    "AddressLookupRequest": "verisk:AddressLookupRequest",
+    "Coordinates": "verisk:Coordinates",
+    "PropertyRisk": "verisk:PropertyRisk",
+    "FireProtectionClass": "verisk:FireProtectionClass",
+    "ConstructionData": "verisk:ConstructionData",
+    "PerilScoreResponse": "verisk:PerilScoreResponse",
+    "RiskScoreRequest": "verisk:RiskScoreRequest",
+    "ClaimsBenchmarks": "verisk:ClaimsBenchmarks",
+    "PropertyLookupResponse": "verisk:PropertyLookupResponse",
+    "RiskScoreResponse": "verisk:RiskScoreResponse",
+    "street": {
+      "@id": "verisk:street",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "verisk:city",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "verisk:state",
+      "@type": "xsd:string"
+    },
+    "zipCode": {
+      "@id": "verisk:zipCode",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "verisk:country",
+      "@type": "xsd:string"
+    },
+    "propertyId": {
+      "@id": "verisk:propertyId",
+      "@type": "xsd:string"
+    },
+    "perilScores": {
+      "@id": "verisk:perilScores",
+      "@type": "@id"
+    },
+    "lastUpdated": {
+      "@id": "verisk:lastUpdated",
+      "@type": "xsd:date"
+    },
+    "locations": {
+      "@id": "verisk:locations",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "locationId": {
+      "@id": "verisk:locationId",
+      "@type": "xsd:string"
+    },
+    "latitude": {
+      "@id": "verisk:latitude",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "verisk:longitude",
+      "@type": "xsd:decimal"
+    },
+    "perils": {
+      "@id": "verisk:perils",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "streetAddress": {
+      "@id": "verisk:streetAddress",
+      "@type": "xsd:string"
+    },
+    "includeRiskData": {
+      "@id": "verisk:includeRiskData",
+      "@type": "xsd:boolean"
+    },
+    "includePerils": {
+      "@id": "verisk:includePerils",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "ppcGrade": {
+      "@id": "verisk:ppcGrade",
+      "@type": "xsd:integer"
+    },
+    "splitCode": {
+      "@id": "verisk:splitCode",
+      "@type": "xsd:string"
+    },
+    "fireDistrictName": {
+      "@id": "verisk:fireDistrictName",
+      "@type": "xsd:string"
+    },
+    "distanceToFireStation": {
+      "@id": "verisk:distanceToFireStation",
+      "@type": "xsd:decimal"
+    },
+    "distanceToHydrant": {
+      "@id": "verisk:distanceToHydrant",
+      "@type": "xsd:decimal"
+    },
+    "communityName": {
+      "@id": "verisk:communityName",
+      "@type": "xsd:string"
+    },
+    "lastSurveyDate": {
+      "@id": "verisk:lastSurveyDate",
+      "@type": "xsd:date"
+    },
+    "yearBuilt": {
+      "@id": "verisk:yearBuilt",
+      "@type": "xsd:integer"
+    },
+    "squareFootage": {
+      "@id": "verisk:squareFootage",
+      "@type": "xsd:integer"
+    },
+    "stories": {
+      "@id": "verisk:stories",
+      "@type": "xsd:integer"
+    },
+    "constructionType": {
+      "@id": "verisk:constructionType",
+      "@type": "xsd:string"
+    },
+    "roofType": {
+      "@id": "verisk:roofType",
+      "@type": "xsd:string"
+    },
+    "occupancyType": {
+      "@id": "verisk:occupancyType",
+      "@type": "xsd:string"
+    },
+    "buildingCode": {
+      "@id": "verisk:buildingCode",
+      "@type": "xsd:string"
+    },
+    "scoreTypes": {
+      "@id": "verisk:scoreTypes",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "lineOfBusiness": {
+      "@id": "verisk:lineOfBusiness",
+      "@type": "xsd:string"
+    },
+    "year": {
+      "@id": "verisk:year",
+      "@type": "xsd:integer"
+    },
+    "metrics": {
+      "@id": "verisk:metrics",
+      "@type": "@id"
+    },
+    "frequency": {
+      "@id": "verisk:frequency",
+      "@type": "xsd:decimal"
+    },
+    "averageSeverity": {
+      "@id": "verisk:averageSeverity",
+      "@type": "xsd:decimal"
+    },
+    "lossRatio": {
+      "@id": "verisk:lossRatio",
+      "@type": "xsd:decimal"
+    },
+    "combinedRatio": {
+      "@id": "verisk:combinedRatio",
+      "@type": "xsd:decimal"
+    },
+    "sampleSize": {
+      "@id": "verisk:sampleSize",
+      "@type": "xsd:integer"
+    },
+    "source": {
+      "@id": "verisk:source",
+      "@type": "xsd:string"
+    },
+    "matchQuality": {
+      "@id": "verisk:matchQuality",
+      "@type": "xsd:string"
+    },
+    "scores": {
+      "@id": "verisk:scores",
+      "@type": "@id"
+    }
+  }
+}

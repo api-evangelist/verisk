@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-lookup-request-schema.json",
+  "title": "AddressLookupRequest",
+  "description": "AddressLookupRequest schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "streetAddress": {
+      "type": "string",
+      "example": "123 Main St"
+    },
+    "city": {
+      "type": "string",
+      "example": "San Francisco"
+    },
+    "state": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "example": "CA"
+    },
+    "zipCode": {
+      "type": "string",
+      "example": "94105"
+    },
+    "includeRiskData": {
+      "type": "boolean",
+      "default": true,
+      "example": true
+    },
+    "includePerils": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    }
+  },
+  "required": [
+    "streetAddress",
+    "city",
+    "state"
+  ]
+}

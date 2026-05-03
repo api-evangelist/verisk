@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-property-lookup-response-structure.json",
+  "description": "PropertyLookupResponse schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "matchQuality": {
+      "type": "string",
+      "enum": [
+        "EXACT",
+        "INTERPOLATED",
+        "ZIP_CENTROID",
+        "CITY_CENTROID"
+      ],
+      "example": "EXACT"
+    },
+    "propertyId": {
+      "type": "string",
+      "example": "PROP-123456"
+    },
+    "address": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "coordinates": {
+      "$ref": "#/components/schemas/Coordinates"
+    },
+    "riskData": {
+      "$ref": "#/components/schemas/PropertyRisk"
+    }
+  },
+  "name": "PropertyLookupResponse"
+}

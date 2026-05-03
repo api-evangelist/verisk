@@ -1,0 +1,9 @@
+{
+  "propertyId": "PROP-123456",
+  "address": "example-value",
+  "coordinates": "example-value",
+  "construction": "example-value",
+  "fireProtection": "example-value",
+  "perilScores": {},
+  "lastUpdated": "2025-03-15"
+}

@@ -1,0 +1,10 @@
+{
+  "ppcGrade": 4,
+  "splitCode": "example-value",
+  "fireDistrictName": "Sample Name",
+  "distanceToFireStation": 0.8,
+  "distanceToHydrant": 0.8,
+  "communityName": "Sample Name",
+  "state": "CA",
+  "lastSurveyDate": "2025-03-15"
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-peril-score-response-structure.json",
+  "description": "PerilScoreResponse schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "locationId": {
+            "type": "string"
+          },
+          "perils": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "score": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
+                },
+                "riskTier": {
+                  "type": "string",
+                  "enum": [
+                    "TIER_1",
+                    "TIER_2",
+                    "TIER_3",
+                    "TIER_4",
+                    "TIER_5"
+                  ]
+                },
+                "annualExceedanceProbability": {
+                  "type": "number",
+                  "description": "Annual probability of loss event"
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": []
+    }
+  },
+  "name": "PerilScoreResponse"
+}

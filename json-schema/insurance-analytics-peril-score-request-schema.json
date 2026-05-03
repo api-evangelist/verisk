@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-request-schema.json",
+  "title": "PerilScoreRequest",
+  "description": "PerilScoreRequest schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "locationId": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          }
+        }
+      },
+      "example": []
+    },
+    "perils": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "HURRICANE",
+          "TORNADO",
+          "HAIL",
+          "WILDFIRE",
+          "EARTHQUAKE",
+          "FLOOD",
+          "WINTER_STORM",
+          "LIGHTNING"
+        ]
+      },
+      "example": []
+    }
+  },
+  "required": [
+    "locations",
+    "perils"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-fire-protection-class-structure.json",
+  "description": "FireProtectionClass schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "ppcGrade": {
+      "type": "int32",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "ISO Public Protection Classification grade",
+      "example": 4
+    },
+    "splitCode": {
+      "type": "string",
+      "description": "Split code (e.g., 4/9 for split classification)",
+      "example": "example-value"
+    },
+    "fireDistrictName": {
+      "type": "string",
+      "example": "Sample Name"
+    },
+    "distanceToFireStation": {
+      "type": "double",
+      "description": "Distance to nearest responding fire station in miles",
+      "example": 0.8
+    },
+    "distanceToHydrant": {
+      "type": "double",
+      "description": "Distance to nearest fire hydrant in feet",
+      "example": 0.8
+    },
+    "communityName": {
+      "type": "string",
+      "example": "Sample Name"
+    },
+    "state": {
+      "type": "string",
+      "example": "CA"
+    },
+    "lastSurveyDate": {
+      "type": "date",
+      "example": "2025-03-15"
+    }
+  },
+  "name": "FireProtectionClass"
+}

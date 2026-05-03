@@ -1,0 +1,13 @@
+{
+  "lineOfBusiness": "example-value",
+  "state": "CA",
+  "year": 2025,
+  "metrics": {
+    "frequency": 6.1,
+    "averageSeverity": 36531.45,
+    "lossRatio": 0.88,
+    "combinedRatio": 1.15
+  },
+  "sampleSize": 100,
+  "source": "Verisk ISO"
+}

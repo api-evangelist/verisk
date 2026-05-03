@@ -1,0 +1,8 @@
+{
+  "streetAddress": "123 Main St",
+  "city": "San Francisco",
+  "state": "CA",
+  "zipCode": "94105",
+  "includeRiskData": true,
+  "includePerils": []
+}

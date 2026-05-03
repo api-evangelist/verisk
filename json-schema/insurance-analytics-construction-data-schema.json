@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-construction-data-schema.json",
+  "title": "ConstructionData",
+  "description": "ConstructionData schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "yearBuilt": {
+      "type": "integer",
+      "example": 2025
+    },
+    "squareFootage": {
+      "type": "integer",
+      "example": 100
+    },
+    "stories": {
+      "type": "integer",
+      "example": 100
+    },
+    "constructionType": {
+      "type": "string",
+      "enum": [
+        "FRAME",
+        "MASONRY",
+        "FIRE_RESISTIVE",
+        "MODIFIED_FIRE_RESISTIVE",
+        "JOISTED_MASONRY",
+        "NON_COMBUSTIBLE"
+      ],
+      "example": "FRAME"
+    },
+    "roofType": {
+      "type": "string",
+      "example": "FRAME"
+    },
+    "occupancyType": {
+      "type": "string",
+      "enum": [
+        "RESIDENTIAL",
+        "COMMERCIAL",
+        "INDUSTRIAL",
+        "MIXED_USE"
+      ],
+      "example": "RESIDENTIAL"
+    },
+    "buildingCode": {
+      "type": "string",
+      "description": "Applicable building code version",
+      "example": "example-value"
+    }
+  }
+}

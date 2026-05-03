@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-risk-schema.json",
+  "title": "PropertyRisk",
+  "description": "PropertyRisk schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "propertyId": {
+      "type": "string",
+      "example": "PROP-123456"
+    },
+    "address": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "coordinates": {
+      "$ref": "#/components/schemas/Coordinates"
+    },
+    "construction": {
+      "$ref": "#/components/schemas/ConstructionData"
+    },
+    "fireProtection": {
+      "$ref": "#/components/schemas/FireProtectionClass"
+    },
+    "perilScores": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "score": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "riskCategory": {
+            "type": "string",
+            "enum": [
+              "VERY_LOW",
+              "LOW",
+              "MODERATE",
+              "HIGH",
+              "VERY_HIGH",
+              "EXTREME"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "example": {}
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date",
+      "example": "2025-03-15"
+    }
+  }
+}

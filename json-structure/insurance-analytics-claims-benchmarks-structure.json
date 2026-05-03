@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-claims-benchmarks-structure.json",
+  "description": "ClaimsBenchmarks schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "lineOfBusiness": {
+      "type": "string",
+      "example": "example-value"
+    },
+    "state": {
+      "type": "string",
+      "example": "CA"
+    },
+    "year": {
+      "type": "int32",
+      "example": 2025
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "frequency": {
+          "type": "double",
+          "description": "Claims frequency per 100 exposures"
+        },
+        "averageSeverity": {
+          "type": "double",
+          "description": "Average claim severity in USD"
+        },
+        "lossRatio": {
+          "type": "double",
+          "description": "Loss ratio as decimal (0.0-1.0+)"
+        },
+        "combinedRatio": {
+          "type": "double"
+        }
+      },
+      "example": {}
+    },
+    "sampleSize": {
+      "type": "int32",
+      "description": "Number of policies in benchmark sample",
+      "example": 100
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source and vintage",
+      "example": "Verisk ISO"
+    }
+  },
+  "name": "ClaimsBenchmarks"
+}

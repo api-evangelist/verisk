@@ -1,0 +1,7 @@
+{
+  "matchQuality": "EXACT",
+  "propertyId": "PROP-123456",
+  "address": "example-value",
+  "coordinates": "example-value",
+  "riskData": "example-value"
+}

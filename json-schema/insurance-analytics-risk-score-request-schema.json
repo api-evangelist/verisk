@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-request-schema.json",
+  "title": "RiskScoreRequest",
+  "description": "RiskScoreRequest schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "locations": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "locationId": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "coordinates": {
+            "$ref": "#/components/schemas/Coordinates"
+          }
+        }
+      },
+      "example": []
+    },
+    "scoreTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "FIRE_PROTECTION_CLASS",
+          "BUILDING_CODE_EFFECTIVENESS",
+          "FLOOD_ZONE",
+          "EARTHQUAKE_ZONE",
+          "WIND_ZONE"
+        ]
+      },
+      "example": []
+    }
+  },
+  "required": [
+    "locations",
+    "scoreTypes"
+  ]
+}

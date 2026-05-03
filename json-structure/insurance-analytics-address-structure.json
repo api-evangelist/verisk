@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-address-structure.json",
+  "description": "Address schema from Verisk Insurance Analytics API",
+  "type": "object",
+  "properties": {
+    "street": {
+      "type": "string",
+      "example": "123 Main St"
+    },
+    "city": {
+      "type": "string",
+      "example": "San Francisco"
+    },
+    "state": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "example": "CA"
+    },
+    "zipCode": {
+      "type": "string",
+      "example": "94105"
+    },
+    "country": {
+      "type": "string",
+      "default": "US",
+      "example": "US"
+    }
+  },
+  "name": "Address"
+}

@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/verisk-property-risk-structure.json",
+  "description": "A property risk assessment from Verisk insurance analytics including construction data, fire protection, and peril scores",
+  "type": "object",
+  "properties": {
+    "propertyId": {
+      "type": "string",
+      "description": "Unique Verisk property identifier"
+    },
+    "address": {
+      "$ref": "#/$defs/Address"
+    },
+    "coordinates": {
+      "$ref": "#/$defs/Coordinates"
+    },
+    "construction": {
+      "$ref": "#/$defs/ConstructionData"
+    },
+    "fireProtection": {
+      "$ref": "#/$defs/FireProtectionClass"
+    },
+    "perilScores": {
+      "type": "object",
+      "description": "Risk scores keyed by peril type",
+      "properties": {
+        "FIRE": {
+          "$ref": "#/$defs/PerilScore"
+        },
+        "WIND": {
+          "$ref": "#/$defs/PerilScore"
+        },
+        "HAIL": {
+          "$ref": "#/$defs/PerilScore"
+        },
+        "FLOOD": {
+          "$ref": "#/$defs/PerilScore"
+        },
+        "EARTHQUAKE": {
+          "$ref": "#/$defs/PerilScore"
+        },
+        "WILDFIRE": {
+          "$ref": "#/$defs/PerilScore"
+        },
+        "HURRICANE": {
+          "$ref": "#/$defs/PerilScore"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/PerilScore"
+      }
+    },
+    "lastUpdated": {
+      "type": "date",
+      "description": "Date when risk data was last updated"
+    }
+  },
+  "required": [
+    "propertyId",
+    "address"
+  ],
+  "definitions": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "US state abbreviation"
+        },
+        "zipCode": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "default": "US"
+        }
+      },
+      "required": [
+        "street",
+        "city",
+        "state"
+      ],
+      "name": "Address"
+    },
+    "Coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "double",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "double",
+          "minimum": -180,
+          "maximum": 180
+        }
+      },
+      "required": [
+        "latitude",
+        "longitude"
+      ],
+      "name": "Coordinates"
+    },
+    "ConstructionData": {
+      "type": "object",
+      "properties": {
+        "yearBuilt": {
+          "type": "int32",
+          "minimum": 1800,
+          "maximum": 2030
+        },
+        "squareFootage": {
+          "type": "int32",
+          "minimum": 0
+        },
+        "stories": {
+          "type": "int32",
+          "minimum": 1
+        },
+        "constructionType": {
+          "type": "string",
+          "enum": [
+            "FRAME",
+            "MASONRY",
+            "FIRE_RESISTIVE",
+            "MODIFIED_FIRE_RESISTIVE",
+            "JOISTED_MASONRY",
+            "NON_COMBUSTIBLE"
+          ],
+          "description": "ISO construction class"
+        },
+        "roofType": {
+          "type": "string",
+          "enum": [
+            "SHINGLE",
+            "TILE",
+            "METAL",
+            "FLAT",
+            "SLATE"
+          ]
+        },
+        "occupancyType": {
+          "type": "string",
+          "enum": [
+            "RESIDENTIAL",
+            "COMMERCIAL",
+            "INDUSTRIAL",
+            "MIXED_USE"
+          ]
+        }
+      },
+      "name": "ConstructionData"
+    },
+    "FireProtectionClass": {
+      "type": "object",
+      "description": "ISO Public Protection Classification (PPC) data",
+      "properties": {
+        "ppcGrade": {
+          "type": "int32",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "PPC grade from 1 (best fire protection) to 10 (no protection)"
+        },
+        "splitCode": {
+          "type": "string",
+          "description": "Split classification code (e.g., 4/9)"
+        },
+        "fireDistrictName": {
+          "type": "string"
+        },
+        "distanceToFireStation": {
+          "type": "double",
+          "minimum": 0,
+          "description": "Distance to nearest fire station in miles"
+        },
+        "distanceToHydrant": {
+          "type": "double",
+          "minimum": 0,
+          "description": "Distance to nearest hydrant in feet"
+        },
+        "lastSurveyDate": {
+          "type": "date"
+        }
+      },
+      "name": "FireProtectionClass"
+    },
+    "PerilScore": {
+      "type": "object",
+      "description": "Risk score for a single natural hazard peril",
+      "properties": {
+        "score": {
+          "type": "int32",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Relative risk score from 1 (lowest) to 100 (highest)"
+        },
+        "riskCategory": {
+          "type": "string",
+          "enum": [
+            "VERY_LOW",
+            "LOW",
+            "MODERATE",
+            "HIGH",
+            "VERY_HIGH",
+            "EXTREME"
+          ]
+        },
+        "annualExceedanceProbability": {
+          "type": "double",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Annual probability of exceeding the loss threshold"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "name": "PerilScore"
+    }
+  },
+  "name": "Verisk Property Risk Assessment"
+}
