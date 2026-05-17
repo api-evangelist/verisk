@@ -77,7 +77,7 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-fire-protection-class-structure.json
       - type: JSONStructure
         url: https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-claims-benchmarks-structure.json
-      - type: JSON-LD
+      - type: JSONLD
         url: https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld
   - aid: verisk:underwriting-api
     name: Verisk UnderWriting API
