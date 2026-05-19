@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Verisk Insurance Analytics API — Property
+  description: 'Verisk Insurance Analytics API — Property. 2 operations. Lead operation: Verisk Look Up Property by Address.
+    Self-contained Naftiko capability covering one Verisk business surface.'
+  tags:
+  - Verisk
+  - Property
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VERISK_API_KEY: VERISK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: insurance-analytics-property
+    baseUri: https://api.verisk.com/insurance/v1
+    description: Verisk Insurance Analytics API — Property business capability. Self-contained, no shared references.
+    resources:
+    - name: property-lookup
+      path: /property/lookup
+      operations:
+      - name: lookuppropertybyaddress
+        method: POST
+        description: Verisk Look Up Property by Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: property-risk-propertyId
+      path: /property/risk/{propertyId}
+      operations:
+      - name: getpropertyrisk
+        method: GET
+        description: Verisk Get Property Risk Assessment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: propertyId
+          in: path
+          type: string
+          description: Property identifier (address or ISO property ID)
+          required: true
+        - name: includePerils
+          in: query
+          type: array
+          description: Peril types to include in response
+        - name: asOfDate
+          in: query
+          type: string
+          description: Historical risk assessment date
+    authentication:
+      type: bearer
+      token: '{{env.VERISK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: insurance-analytics-property-rest
+    port: 8080
+    description: REST adapter for Verisk Insurance Analytics API — Property. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/property/lookup
+      name: property-lookup
+      description: REST surface for property-lookup.
+      operations:
+      - method: POST
+        name: lookuppropertybyaddress
+        description: Verisk Look Up Property by Address
+        call: insurance-analytics-property.lookuppropertybyaddress
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/property/risk/{propertyid}
+      name: property-risk-propertyid
+      description: REST surface for property-risk-propertyId.
+      operations:
+      - method: GET
+        name: getpropertyrisk
+        description: Verisk Get Property Risk Assessment
+        call: insurance-analytics-property.getpropertyrisk
+        with:
+          propertyId: rest.propertyId
+          includePerils: rest.includePerils
+          asOfDate: rest.asOfDate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: insurance-analytics-property-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Verisk Insurance Analytics API — Property. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: verisk-look-up-property-address
+      description: Verisk Look Up Property by Address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: insurance-analytics-property.lookuppropertybyaddress
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: verisk-get-property-risk-assessment
+      description: Verisk Get Property Risk Assessment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insurance-analytics-property.getpropertyrisk
+      with:
+        propertyId: tools.propertyId
+        includePerils: tools.includePerils
+        asOfDate: tools.asOfDate
+      outputParameters:
+      - type: object
+        mapping: $.
