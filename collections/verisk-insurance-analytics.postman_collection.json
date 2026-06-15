@@ -1,0 +1,887 @@
+{
+  "item": [
+    {
+      "id": "c335aa87-74fd-4f19-8599-26b51dbfefbe",
+      "name": "Catastrophe",
+      "description": {
+        "content": "Catastrophe modeling and peril data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "682e5403-6d9f-424e-9c6a-4a2a7f5d9dd6",
+          "name": "Verisk Get Catastrophe Peril Scores",
+          "request": {
+            "name": "Verisk Get Catastrophe Peril Scores",
+            "description": {
+              "content": "Returns catastrophe exposure scores for natural hazard perils including hurricane, tornado, hail, wildfire, earthquake, and flood for a list of locations. Used for catastrophe risk management and PML estimation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catastrophe",
+                "peril-scores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locations\": [\n    {\n      \"locationId\": \"<string>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    },\n    {\n      \"locationId\": \"<string>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  ],\n  \"perils\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8c063bf-68b4-4c8b-8ffa-796517e46e9d",
+              "name": "Peril exposure scores",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catastrophe",
+                    "peril-scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [],\n  \"perils\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"locations\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0211522a-daa9-47eb-972b-02e70fb64054",
+      "name": "Claims",
+      "description": {
+        "content": "Claims analytics and benchmarking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad31004e-d8cc-4ccd-ac1a-0445b68fa4ae",
+          "name": "Verisk Get Claims Benchmarking Data",
+          "request": {
+            "name": "Verisk Get Claims Benchmarking Data",
+            "description": {
+              "content": "Returns industry claims benchmarking data for loss frequency, loss severity, and combined ratio metrics across lines of business, states, and risk segments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims",
+                "benchmarks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lineOfBusiness",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "US state code"
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "metricType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9720894-2782-4585-b838-8c7f2d985b7c",
+              "name": "Claims benchmarking metrics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims",
+                    "benchmarks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lineOfBusiness",
+                      "value": "HOMEOWNERS"
+                    },
+                    {
+                      "key": "state",
+                      "value": "CA"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    },
+                    {
+                      "key": "metricType",
+                      "value": "FREQUENCY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lineOfBusiness\": \"example-value\",\n  \"state\": \"CA\",\n  \"year\": 2025,\n  \"metrics\": {},\n  \"sampleSize\": 100,\n  \"source\": \"Verisk ISO\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7768855d-b4a1-4107-a1fa-e065021bafba",
+      "name": "Property",
+      "description": {
+        "content": "Property risk data and analytics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c5e6208-f620-41af-90ba-dfff81822652",
+          "name": "Verisk Get Property Risk Assessment",
+          "request": {
+            "name": "Verisk Get Property Risk Assessment",
+            "description": {
+              "content": "Returns comprehensive risk data for a specific property including construction, occupancy, fire protection class, ISO rating, and hazard scores for fire, wind, hail, flood, and earthquake exposures.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "property",
+                "risk",
+                ":propertyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includePerils",
+                  "value": "<string>",
+                  "description": "Peril types to include in response"
+                },
+                {
+                  "disabled": false,
+                  "key": "includePerils",
+                  "value": "<string>",
+                  "description": "Peril types to include in response"
+                },
+                {
+                  "disabled": false,
+                  "key": "asOfDate",
+                  "value": "<date>",
+                  "description": "Historical risk assessment date"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) Property identifier (address or ISO property ID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ca1294d-b9b1-465b-9379-ceaae74de8d8",
+              "name": "Property risk assessment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "property",
+                    "risk",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asOfDate",
+                      "value": "2025-03-15"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) Property identifier (address or ISO property ID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"propertyId\": \"PROP-123456\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zipCode\": \"94105\",\n    \"country\": \"US\"\n  },\n  \"coordinates\": {\n    \"latitude\": 36.1699,\n    \"longitude\": -115.1398\n  },\n  \"construction\": {\n    \"yearBuilt\": 2025,\n    \"squareFootage\": 100,\n    \"stories\": 100,\n    \"constructionType\": \"FRAME\",\n    \"roofType\": \"FRAME\",\n    \"occupancyType\": \"RESIDENTIAL\",\n    \"buildingCode\": \"example-value\"\n  },\n  \"fireProtection\": {\n    \"ppcGrade\": 4,\n    \"splitCode\": \"example-value\",\n    \"fireDistrictName\": \"Sample Name\",\n    \"distanceToFireStation\": 0.8,\n    \"distanceToHydrant\": 0.8,\n    \"communityName\": \"Sample Name\",\n    \"state\": \"CA\",\n    \"lastSurveyDate\": \"2025-03-15\"\n  },\n  \"perilScores\": {},\n  \"lastUpdated\": \"2025-03-15\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e5ee99f-020c-4818-83d8-bea465215e8b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "property",
+                    "risk",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asOfDate",
+                      "value": "2025-03-15"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) Property identifier (address or ISO property ID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5eaedb38-8052-4019-b0d2-ae997e7f4fd2",
+              "name": "Property not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "property",
+                    "risk",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asOfDate",
+                      "value": "2025-03-15"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) Property identifier (address or ISO property ID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32c03377-c6d1-4e7f-a08d-e483c171216b",
+          "name": "Verisk Look Up Property by Address",
+          "request": {
+            "name": "Verisk Look Up Property by Address",
+            "description": {
+              "content": "Resolves a street address to a property record and returns risk data. Supports geocoding to USGS coordinates and ISO property identification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "property",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"streetAddress\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"includeRiskData\": true,\n  \"includePerils\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ca8391a-7f59-4e0a-a210-63d68f514ec2",
+              "name": "Property lookup result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "property",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"streetAddress\": \"123 Main St\",\n  \"city\": \"San Francisco\",\n  \"state\": \"CA\",\n  \"zipCode\": \"94105\",\n  \"includeRiskData\": true,\n  \"includePerils\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matchQuality\": \"EXACT\",\n  \"propertyId\": \"PROP-123456\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zipCode\": \"94105\",\n    \"country\": \"US\"\n  },\n  \"coordinates\": {\n    \"latitude\": 36.1699,\n    \"longitude\": -115.1398\n  },\n  \"riskData\": {\n    \"propertyId\": \"PROP-123456\",\n    \"address\": {\n      \"street\": \"123 Main St\",\n      \"city\": \"San Francisco\",\n      \"state\": \"CA\",\n      \"zipCode\": \"94105\",\n      \"country\": \"US\"\n    },\n    \"coordinates\": {\n      \"latitude\": 36.1699,\n      \"longitude\": -115.1398\n    },\n    \"construction\": {\n      \"yearBuilt\": 2025,\n      \"squareFootage\": 100,\n      \"stories\": 100,\n      \"constructionType\": \"FRAME\",\n      \"roofType\": \"FRAME\",\n      \"occupancyType\": \"RESIDENTIAL\",\n      \"buildingCode\": \"example-value\"\n    },\n    \"fireProtection\": {\n      \"ppcGrade\": 4,\n      \"splitCode\": \"example-value\",\n      \"fireDistrictName\": \"Sample Name\",\n      \"distanceToFireStation\": 0.8,\n      \"distanceToHydrant\": 0.8,\n      \"communityName\": \"Sample Name\",\n      \"state\": \"CA\",\n      \"lastSurveyDate\": \"2025-03-15\"\n    },\n    \"perilScores\": {},\n    \"lastUpdated\": \"2025-03-15\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "529b49ee-4a5a-47d1-b53b-b5d1d1fa248e",
+              "name": "Invalid address format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "property",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"streetAddress\": \"123 Main St\",\n  \"city\": \"San Francisco\",\n  \"state\": \"CA\",\n  \"zipCode\": \"94105\",\n  \"includeRiskData\": true,\n  \"includePerils\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8ec9b60f-3fc6-426a-8e4a-6c44827e84d3",
+      "name": "Risk Scoring",
+      "description": {
+        "content": "Insurance risk scores and rating factors",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e6d5ed99-9959-407a-ae34-5285500915b0",
+          "name": "Verisk Get Insurance Risk Scores",
+          "request": {
+            "name": "Verisk Get Insurance Risk Scores",
+            "description": {
+              "content": "Returns risk scores for properties, policies, or portfolios. Includes ISO fire protection classification, building code effectiveness grading, and commercial/personal lines risk scores.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "risk",
+                "scores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locations\": [\n    {\n      \"locationId\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zipCode\": \"<string>\",\n        \"country\": \"US\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      }\n    },\n    {\n      \"locationId\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zipCode\": \"<string>\",\n        \"country\": \"US\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      }\n    }\n  ],\n  \"scoreTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6b74c70-bbf2-477e-a7ad-7f0718c22c39",
+              "name": "Risk scores",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "risk",
+                    "scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [],\n  \"scoreTypes\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"locations\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81ce2a0f-208a-499b-8da0-ae28737de25b",
+          "name": "Verisk Get ISO Fire Protection Class (PPC)",
+          "request": {
+            "name": "Verisk Get ISO Fire Protection Class (PPC)",
+            "description": {
+              "content": "Returns the ISO Public Protection Classification (PPC) grade for a location, which measures a community's fire suppression capability. PPC grades range from 1 (best) to 10.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "risk",
+                "fire-protection-class"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "constructionType",
+                  "value": "<string>",
+                  "description": "ISO construction class"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c939175-f564-44de-9d7d-60384da6f2ca",
+              "name": "Fire protection class data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "risk",
+                    "fire-protection-class"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latitude",
+                      "value": "36.1699"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "-115.1398"
+                    },
+                    {
+                      "key": "constructionType",
+                      "value": "FRAME"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ppcGrade\": 4,\n  \"splitCode\": \"example-value\",\n  \"fireDistrictName\": \"Sample Name\",\n  \"distanceToFireStation\": 0.8,\n  \"distanceToHydrant\": 0.8,\n  \"communityName\": \"Sample Name\",\n  \"state\": \"CA\",\n  \"lastSurveyDate\": \"2025-03-15\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.verisk.com/insurance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1b5a63fb-ec4b-4b23-a9fe-1cb05974bf13",
+    "name": "Verisk Insurance Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.\n\nContact Support:\n Name: Verisk Support",
+      "type": "text/plain"
+    }
+  }
+}

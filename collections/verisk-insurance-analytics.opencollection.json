@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verisk Insurance Analytics API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Property",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verisk Get Property Risk Assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.verisk.com/insurance/v1/property/risk/:propertyId",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "PROP-123456",
+                "type": "path",
+                "description": "Property identifier (address or ISO property ID)"
+              },
+              {
+                "name": "includePerils",
+                "value": "",
+                "type": "query",
+                "description": "Peril types to include in response"
+              },
+              {
+                "name": "asOfDate",
+                "value": "2025-03-15",
+                "type": "query",
+                "description": "Historical risk assessment date"
+              }
+            ]
+          },
+          "docs": "Returns comprehensive risk data for a specific property including construction, occupancy, fire protection class, ISO rating, and hazard scores for fire, wind, hail, flood, and earthquake exposures."
+        },
+        {
+          "info": {
+            "name": "Verisk Look Up Property by Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.verisk.com/insurance/v1/property/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolves a street address to a property record and returns risk data. Supports geocoding to USGS coordinates and ISO property identification."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Risk Scoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verisk Get Insurance Risk Scores",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.verisk.com/insurance/v1/risk/scores",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns risk scores for properties, policies, or portfolios. Includes ISO fire protection classification, building code effectiveness grading, and commercial/personal lines risk scores."
+        },
+        {
+          "info": {
+            "name": "Verisk Get ISO Fire Protection Class (PPC)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.verisk.com/insurance/v1/risk/fire-protection-class",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "36.1699",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "-115.1398",
+                "type": "query"
+              },
+              {
+                "name": "constructionType",
+                "value": "FRAME",
+                "type": "query",
+                "description": "ISO construction class"
+              }
+            ]
+          },
+          "docs": "Returns the ISO Public Protection Classification (PPC) grade for a location, which measures a community's fire suppression capability. PPC grades range from 1 (best) to 10."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catastrophe",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verisk Get Catastrophe Peril Scores",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.verisk.com/insurance/v1/catastrophe/peril-scores",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns catastrophe exposure scores for natural hazard perils including hurricane, tornado, hail, wildfire, earthquake, and flood for a list of locations. Used for catastrophe risk management and PML estimation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verisk Get Claims Benchmarking Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.verisk.com/insurance/v1/claims/benchmarks",
+            "params": [
+              {
+                "name": "lineOfBusiness",
+                "value": "HOMEOWNERS",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "CA",
+                "type": "query",
+                "description": "US state code"
+              },
+              {
+                "name": "year",
+                "value": "2025",
+                "type": "query"
+              },
+              {
+                "name": "metricType",
+                "value": "FREQUENCY",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns industry claims benchmarking data for loss frequency, loss severity, and combined ratio metrics across lines of business, states, and risk segments."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
