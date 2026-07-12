@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/verisk-insurance-analytics-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/verisk-insurance-analytics-openapi.yml
+- name: ApiKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  sources:
+  - openapi/verisk-insurance-analytics-openapi.yml

@@ -117,6 +117,10 @@ apis:
       - type: Authentication
         url: https://gateway.verisk.com/docs/Authentication.ashx
 common:
+  - type: DomainSecurity
+    url: security/verisk-domain-security.yml
+  - type: Authentication
+    url: authentication/verisk-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/verisk
   - type: LinkedIn
