@@ -117,6 +117,8 @@ apis:
       - type: Authentication
         url: https://gateway.verisk.com/docs/Authentication.ashx
 common:
+  - type: AgenticAccess
+    url: agentic-access/verisk-agentic-access.yml
   - type: DomainSecurity
     url: security/verisk-domain-security.yml
   - type: Authentication
