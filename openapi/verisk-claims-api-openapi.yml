@@ -1,0 +1,133 @@
+openapi: 3.1.0
+info:
+  title: Verisk Insurance Analytics Catastrophe Claims API
+  description: Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.
+  version: '1.0'
+  contact:
+    name: Verisk Support
+    url: https://www.verisk.com/contact/
+  license:
+    name: Verisk Terms of Service
+    url: https://www.verisk.com/terms-of-use/
+servers:
+- url: https://api.verisk.com/insurance/v1
+  description: Verisk Insurance Analytics API
+security:
+- BearerAuth: []
+- ApiKeyHeader: []
+tags:
+- name: Claims
+  description: Claims analytics and benchmarking
+paths:
+  /claims/benchmarks:
+    get:
+      operationId: getClaimsBenchmarks
+      summary: Verisk Get Claims Benchmarking Data
+      description: Returns industry claims benchmarking data for loss frequency, loss severity, and combined ratio metrics across lines of business, states, and risk segments.
+      tags:
+      - Claims
+      parameters:
+      - name: lineOfBusiness
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - HOMEOWNERS
+          - AUTO
+          - COMMERCIAL_AUTO
+          - CGL
+          - COMMERCIAL_PROPERTY
+          - WORKERS_COMP
+        example: HOMEOWNERS
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+          pattern: ^[A-Z]{2}$
+        description: US state code
+        example: CA
+      - name: year
+        in: query
+        schema:
+          type: integer
+          example: 2025
+        example: 2025
+      - name: metricType
+        in: query
+        schema:
+          type: string
+          enum:
+          - FREQUENCY
+          - SEVERITY
+          - COMBINED_RATIO
+          - LOSS_RATIO
+        example: FREQUENCY
+      responses:
+        '200':
+          description: Claims benchmarking metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimsBenchmarks'
+              examples:
+                GetClaimsBenchmarks200Example:
+                  summary: Default getClaimsBenchmarks 200 response
+                  x-microcks-default: true
+                  value:
+                    lineOfBusiness: example-value
+                    state: CA
+                    year: 2025
+                    metrics: {}
+                    sampleSize: 100
+                    source: Verisk ISO
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ClaimsBenchmarks:
+      type: object
+      properties:
+        lineOfBusiness:
+          type: string
+          example: example-value
+        state:
+          type: string
+          example: CA
+        year:
+          type: integer
+          example: 2025
+        metrics:
+          type: object
+          properties:
+            frequency:
+              type: number
+              description: Claims frequency per 100 exposures
+            averageSeverity:
+              type: number
+              description: Average claim severity in USD
+            lossRatio:
+              type: number
+              description: Loss ratio as decimal (0.0-1.0+)
+            combinedRatio:
+              type: number
+          example: {}
+        sampleSize:
+          type: integer
+          description: Number of policies in benchmark sample
+          example: 100
+        source:
+          type: string
+          description: Data source and vintage
+          example: Verisk ISO
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key

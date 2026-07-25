@@ -1,0 +1,131 @@
+openapi: 3.1.0
+info:
+  title: Verisk Insurance Analytics Catastrophe API
+  description: Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.
+  version: '1.0'
+  contact:
+    name: Verisk Support
+    url: https://www.verisk.com/contact/
+  license:
+    name: Verisk Terms of Service
+    url: https://www.verisk.com/terms-of-use/
+servers:
+- url: https://api.verisk.com/insurance/v1
+  description: Verisk Insurance Analytics API
+security:
+- BearerAuth: []
+- ApiKeyHeader: []
+tags:
+- name: Catastrophe
+  description: Catastrophe modeling and peril data
+paths:
+  /catastrophe/peril-scores:
+    post:
+      operationId: getPerilScores
+      summary: Verisk Get Catastrophe Peril Scores
+      description: Returns catastrophe exposure scores for natural hazard perils including hurricane, tornado, hail, wildfire, earthquake, and flood for a list of locations. Used for catastrophe risk management and PML estimation.
+      tags:
+      - Catastrophe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerilScoreRequest'
+            examples:
+              GetPerilScoresRequestExample:
+                summary: Default getPerilScores request
+                x-microcks-default: true
+                value:
+                  locations: []
+                  perils: []
+      responses:
+        '200':
+          description: Peril exposure scores
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerilScoreResponse'
+              examples:
+                GetPerilScores200Example:
+                  summary: Default getPerilScores 200 response
+                  x-microcks-default: true
+                  value:
+                    locations: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PerilScoreRequest:
+      type: object
+      required:
+      - locations
+      - perils
+      properties:
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              latitude:
+                type: number
+              longitude:
+                type: number
+          example: []
+        perils:
+          type: array
+          items:
+            type: string
+            enum:
+            - HURRICANE
+            - TORNADO
+            - HAIL
+            - WILDFIRE
+            - EARTHQUAKE
+            - FLOOD
+            - WINTER_STORM
+            - LIGHTNING
+          example: []
+    PerilScoreResponse:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              perils:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    score:
+                      type: integer
+                      minimum: 1
+                      maximum: 100
+                    riskTier:
+                      type: string
+                      enum:
+                      - TIER_1
+                      - TIER_2
+                      - TIER_3
+                      - TIER_4
+                      - TIER_5
+                    annualExceedanceProbability:
+                      type: number
+                      description: Annual probability of loss event
+          example: []
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key

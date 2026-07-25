@@ -1,0 +1,244 @@
+openapi: 3.1.0
+info:
+  title: Verisk Insurance Analytics Catastrophe Risk Scoring API
+  description: Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.
+  version: '1.0'
+  contact:
+    name: Verisk Support
+    url: https://www.verisk.com/contact/
+  license:
+    name: Verisk Terms of Service
+    url: https://www.verisk.com/terms-of-use/
+servers:
+- url: https://api.verisk.com/insurance/v1
+  description: Verisk Insurance Analytics API
+security:
+- BearerAuth: []
+- ApiKeyHeader: []
+tags:
+- name: Risk Scoring
+  description: Insurance risk scores and rating factors
+paths:
+  /risk/scores:
+    post:
+      operationId: getRiskScores
+      summary: Verisk Get Insurance Risk Scores
+      description: Returns risk scores for properties, policies, or portfolios. Includes ISO fire protection classification, building code effectiveness grading, and commercial/personal lines risk scores.
+      tags:
+      - Risk Scoring
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskScoreRequest'
+            examples:
+              GetRiskScoresRequestExample:
+                summary: Default getRiskScores request
+                x-microcks-default: true
+                value:
+                  locations: []
+                  scoreTypes: []
+      responses:
+        '200':
+          description: Risk scores
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskScoreResponse'
+              examples:
+                GetRiskScores200Example:
+                  summary: Default getRiskScores 200 response
+                  x-microcks-default: true
+                  value:
+                    locations: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /risk/fire-protection-class:
+    get:
+      operationId: getFireProtectionClass
+      summary: Verisk Get ISO Fire Protection Class (PPC)
+      description: Returns the ISO Public Protection Classification (PPC) grade for a location, which measures a community's fire suppression capability. PPC grades range from 1 (best) to 10.
+      tags:
+      - Risk Scoring
+      parameters:
+      - name: latitude
+        in: query
+        required: true
+        schema:
+          type: number
+        example: 36.1699
+      - name: longitude
+        in: query
+        required: true
+        schema:
+          type: number
+        example: -115.1398
+      - name: constructionType
+        in: query
+        schema:
+          type: string
+          enum:
+          - FRAME
+          - MASONRY
+          - FIRE_RESISTIVE
+          - MODIFIED_FIRE_RESISTIVE
+          - JOISTED_MASONRY
+          - NON_COMBUSTIBLE
+        description: ISO construction class
+        example: FRAME
+      responses:
+        '200':
+          description: Fire protection class data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FireProtectionClass'
+              examples:
+                GetFireProtectionClass200Example:
+                  summary: Default getFireProtectionClass 200 response
+                  x-microcks-default: true
+                  value:
+                    ppcGrade: 4
+                    splitCode: example-value
+                    fireDistrictName: Sample Name
+                    distanceToFireStation: 0.8
+                    distanceToHydrant: 0.8
+                    communityName: Sample Name
+                    state: CA
+                    lastSurveyDate: '2025-03-15'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RiskScoreRequest:
+      type: object
+      required:
+      - locations
+      - scoreTypes
+      properties:
+        locations:
+          type: array
+          maxItems: 100
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              address:
+                $ref: '#/components/schemas/Address'
+              coordinates:
+                $ref: '#/components/schemas/Coordinates'
+          example: []
+        scoreTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - FIRE_PROTECTION_CLASS
+            - BUILDING_CODE_EFFECTIVENESS
+            - FLOOD_ZONE
+            - EARTHQUAKE_ZONE
+            - WIND_ZONE
+          example: []
+    FireProtectionClass:
+      type: object
+      properties:
+        ppcGrade:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: ISO Public Protection Classification grade
+          example: 4
+        splitCode:
+          type: string
+          description: Split code (e.g., 4/9 for split classification)
+          example: example-value
+        fireDistrictName:
+          type: string
+          example: Sample Name
+        distanceToFireStation:
+          type: number
+          description: Distance to nearest responding fire station in miles
+          example: 0.8
+        distanceToHydrant:
+          type: number
+          description: Distance to nearest fire hydrant in feet
+          example: 0.8
+        communityName:
+          type: string
+          example: Sample Name
+        state:
+          type: string
+          example: CA
+        lastSurveyDate:
+          type: string
+          format: date
+          example: '2025-03-15'
+    RiskScoreResponse:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              scores:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    score:
+                      oneOf:
+                      - type: integer
+                      - type: string
+                      - type: number
+                    description:
+                      type: string
+          example: []
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 123 Main St
+        city:
+          type: string
+          example: San Francisco
+        state:
+          type: string
+          pattern: ^[A-Z]{2}$
+          example: CA
+        zipCode:
+          type: string
+          example: '94105'
+        country:
+          type: string
+          default: US
+          example: US
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          minimum: -90
+          maximum: 90
+          example: 36.1699
+        longitude:
+          type: number
+          minimum: -180
+          maximum: 180
+          example: -115.1398
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
