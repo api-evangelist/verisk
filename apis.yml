@@ -1,4 +1,18 @@
 aid: verisk
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/verisk.png
 name: Verisk
 description: >-
   Verisk (formerly ISO) is a leading data analytics and technology company serving the insurance, energy, and financial
@@ -18,105 +32,295 @@ tags:
   - Underwriting
   - Claims
 apis:
-  - aid: verisk:insurance-analytics
-    name: Verisk Insurance Analytics API
-    description: >-
-      Verisk Insurance Analytics API provides property risk assessments, ISO fire protection classifications,
-      catastrophe peril scores, insurance risk scoring, and claims benchmarking data for P&C insurance carriers.
-      Delivers loss cost data, risk classification, and underwriting data services for insurance pricing, reserving, and
-      exposure management.
-    humanURL: https://gateway.verisk.com/docs/MainPage.ashx
-    tags:
-      - Insurance
-      - Analytics
-      - Risk Management
-      - Property Data
-      - Catastrophe Modeling
-      - Underwriting
-      - Claims
-    properties:
-      - type: Documentation
-        url: https://gateway.verisk.com/docs/MainPage.ashx
-      - type: GettingStarted
-        url: https://gateway.verisk.com/docs/Getting-Started.ashx
-      - type: Authentication
-        url: https://gateway.verisk.com/docs/Authentication.ashx
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/openapi/verisk-insurance-analytics-openapi.yml
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-risk-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-construction-data-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-fire-protection-class-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-lookup-request-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-lookup-response-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-request-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-response-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-request-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-response-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-claims-benchmarks-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-coordinates-schema.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-property-risk-structure.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-construction-data-structure.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-fire-protection-class-structure.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-claims-benchmarks-structure.json
-      - type: JSONLD
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld
-  - aid: verisk:underwriting-api
-    name: Verisk UnderWriting API
-    description: >-
-      Verisk UnderWriting API provides personal and commercial lines insurance underwriting data including homeowner
-      data, motor vehicle reports, A-PLUS auto and property reports, LightSpeed prefill, geocoding, ISO fire protection
-      class, and coverage verification for P&C insurance carriers. Supports both JSON and XML response formats.
-    humanURL: https://gateway.verisk.com/docs/MainPage.ashx
-    tags:
-      - Underwriting
-      - Insurance
-      - Personal Lines
-      - Commercial Lines
-      - Motor Vehicle
-      - Property Data
-    properties:
-      - type: Documentation
-        url: https://gateway.verisk.com/docs/MainPage.ashx
-      - type: GettingStarted
-        url: https://gateway.verisk.com/docs/Getting-Started.ashx
-      - type: Authentication
-        url: https://gateway.verisk.com/docs/Authentication.ashx
+- aid: verisk:underwriting-api
+  name: Verisk UnderWriting API
+  description: >-
+    Verisk UnderWriting API provides personal and commercial lines insurance underwriting data including
+    homeowner data, motor vehicle reports, A-PLUS auto and property reports, LightSpeed prefill, geocoding,
+    ISO fire protection class, and coverage verification for P&C insurance carriers. Supports both JSON
+    and XML response formats.
+  humanURL: https://gateway.verisk.com/docs/MainPage.ashx
+  tags:
+  - Underwriting
+  - Insurance
+  - Personal Lines
+  - Commercial Lines
+  - Motor Vehicle
+  - Property Data
+  properties:
+  - type: Documentation
+    url: https://gateway.verisk.com/docs/MainPage.ashx
+  - type: GettingStarted
+    url: https://gateway.verisk.com/docs/Getting-Started.ashx
+  - type: Authentication
+    url: https://gateway.verisk.com/docs/Authentication.ashx
+- aid: verisk:verisk-catastrophe-api
+  name: Verisk Catastrophe API
+  description: Catastrophe modeling and peril data
+  humanURL: https://gateway.verisk.com/docs/MainPage.ashx
+  tags:
+  - Catastrophe
+  properties:
+  - type: OpenAPI
+    url: openapi/verisk-catastrophe-api-openapi.yml
+  - type: Documentation
+    url: https://gateway.verisk.com/docs/MainPage.ashx
+  - type: GettingStarted
+    url: https://gateway.verisk.com/docs/Getting-Started.ashx
+  - type: Authentication
+    url: https://gateway.verisk.com/docs/Authentication.ashx
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-risk-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-construction-data-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-fire-protection-class-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-lookup-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-lookup-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-claims-benchmarks-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-coordinates-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-property-risk-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-construction-data-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-fire-protection-class-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-claims-benchmarks-structure.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld
+- aid: verisk:verisk-claims-api
+  name: Verisk Claims API
+  description: Claims analytics and benchmarking
+  humanURL: https://gateway.verisk.com/docs/MainPage.ashx
+  tags:
+  - Claims
+  properties:
+  - type: OpenAPI
+    url: openapi/verisk-claims-api-openapi.yml
+  - type: Documentation
+    url: https://gateway.verisk.com/docs/MainPage.ashx
+  - type: GettingStarted
+    url: https://gateway.verisk.com/docs/Getting-Started.ashx
+  - type: Authentication
+    url: https://gateway.verisk.com/docs/Authentication.ashx
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-risk-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-construction-data-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-fire-protection-class-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-lookup-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-lookup-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-claims-benchmarks-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-coordinates-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-property-risk-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-construction-data-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-fire-protection-class-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-claims-benchmarks-structure.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld
+- aid: verisk:verisk-property-api
+  name: Verisk Property API
+  description: Property risk data and analytics
+  humanURL: https://gateway.verisk.com/docs/MainPage.ashx
+  tags:
+  - Property
+  properties:
+  - type: OpenAPI
+    url: openapi/verisk-property-api-openapi.yml
+  - type: Documentation
+    url: https://gateway.verisk.com/docs/MainPage.ashx
+  - type: GettingStarted
+    url: https://gateway.verisk.com/docs/Getting-Started.ashx
+  - type: Authentication
+    url: https://gateway.verisk.com/docs/Authentication.ashx
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-risk-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-construction-data-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-fire-protection-class-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-lookup-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-lookup-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-claims-benchmarks-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-coordinates-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-property-risk-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-construction-data-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-fire-protection-class-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-claims-benchmarks-structure.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld
+- aid: verisk:verisk-risk-scoring-api
+  name: Verisk Risk Scoring API
+  description: Insurance risk scores and rating factors
+  humanURL: https://gateway.verisk.com/docs/MainPage.ashx
+  tags:
+  - Risk Scoring
+  properties:
+  - type: OpenAPI
+    url: openapi/verisk-risk-scoring-api-openapi.yml
+  - type: Documentation
+    url: https://gateway.verisk.com/docs/MainPage.ashx
+  - type: GettingStarted
+    url: https://gateway.verisk.com/docs/Getting-Started.ashx
+  - type: Authentication
+    url: https://gateway.verisk.com/docs/Authentication.ashx
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-risk-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-construction-data-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-fire-protection-class-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-lookup-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-lookup-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-claims-benchmarks-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-coordinates-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-property-risk-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-construction-data-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-fire-protection-class-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-claims-benchmarks-structure.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/verisk/overview
   - type: AgenticAccess
     url: agentic-access/verisk-agentic-access.yml
   - type: DomainSecurity
