@@ -1,0 +1,20 @@
+{
+  "provider": "verisk",
+  "sources": [
+    "verisk-catastrophe-api-openapi.yml",
+    "verisk-claims-api-openapi.yml",
+    "verisk-property-api-openapi.yml",
+    "verisk-risk-scoring-api-openapi.yml"
+  ],
+  "outputs": [
+    "verisk-catastrophe-api-openapi.yml",
+    "verisk-claims-api-openapi.yml",
+    "verisk-property-api-openapi.yml",
+    "verisk-risk-scoring-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

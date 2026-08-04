@@ -1,0 +1,163 @@
+{
+  "info": {
+    "_postman_id": "732d0e25-f556-4500-911b-fcb4958b3766",
+    "name": "Verisk Insurance Analytics Catastrophe Claims API",
+    "description": "Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.\n\nContact Support:\n Name: Verisk Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:58.000Z",
+    "updatedAt": "2026-07-28T03:26:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-732d0e25-f556-4500-911b-fcb4958b3766"
+  },
+  "item": [
+    {
+      "name": "claims",
+      "item": [
+        {
+          "name": "benchmarks",
+          "item": [
+            {
+              "name": "Verisk Get Claims Benchmarking Data",
+              "id": "55f17ee2-e2b0-4eaa-aeba-f5c2761f0a13",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/claims/benchmarks?lineOfBusiness=HOMEOWNERS&state=CP&year=<integer>&metricType=LOSS_RATIO",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "claims",
+                    "benchmarks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "lineOfBusiness",
+                      "value": "HOMEOWNERS"
+                    },
+                    {
+                      "description": "US state code",
+                      "key": "state",
+                      "value": "CP"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "metricType",
+                      "value": "LOSS_RATIO"
+                    }
+                  ]
+                },
+                "description": "Returns industry claims benchmarking data for loss frequency, loss severity, and combined ratio metrics across lines of business, states, and risk segments."
+              },
+              "response": [
+                {
+                  "id": "20fda821-96af-403c-8017-76f68d9d201f",
+                  "name": "Claims benchmarking metrics",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/claims/benchmarks?lineOfBusiness=HOMEOWNERS&state=CP&year=<integer>&metricType=LOSS_RATIO",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "claims",
+                        "benchmarks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "lineOfBusiness",
+                          "value": "HOMEOWNERS"
+                        },
+                        {
+                          "description": "US state code",
+                          "key": "state",
+                          "value": "CP"
+                        },
+                        {
+                          "key": "year",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "metricType",
+                          "value": "LOSS_RATIO"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"lineOfBusiness\": \"<string>\",\n  \"state\": \"<string>\",\n  \"year\": \"<integer>\",\n  \"metrics\": {\n    \"frequency\": \"<number>\",\n    \"averageSeverity\": \"<number>\",\n    \"lossRatio\": \"<number>\",\n    \"combinedRatio\": \"<number>\"\n  },\n  \"sampleSize\": \"<integer>\",\n  \"source\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:26:58.000Z",
+                  "updatedAt": "2026-07-28T03:26:58.000Z",
+                  "uid": "35240-20fda821-96af-403c-8017-76f68d9d201f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:26:58.000Z",
+              "updatedAt": "2026-07-28T03:26:58.000Z",
+              "uid": "35240-55f17ee2-e2b0-4eaa-aeba-f5c2761f0a13"
+            }
+          ],
+          "id": "6d8e1b2b-20a0-483e-a2d2-723c11cbb4fb",
+          "createdAt": "2026-07-28T03:26:58.000Z",
+          "updatedAt": "2026-07-28T03:26:58.000Z",
+          "uid": "35240-6d8e1b2b-20a0-483e-a2d2-723c11cbb4fb"
+        }
+      ],
+      "id": "a972e538-ca47-4d9c-9893-3134a8ed21e3",
+      "createdAt": "2026-07-28T03:26:58.000Z",
+      "updatedAt": "2026-07-28T03:26:58.000Z",
+      "uid": "35240-a972e538-ca47-4d9c-9893-3134a8ed21e3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.verisk.com/insurance/v1"
+    }
+  ]
+}

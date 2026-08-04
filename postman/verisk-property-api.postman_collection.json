@@ -1,0 +1,440 @@
+{
+  "info": {
+    "_postman_id": "8e75ea22-c948-470a-ab39-442ffc00589b",
+    "name": "Verisk Insurance Analytics Catastrophe Property API",
+    "description": "Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.\n\nContact Support:\n Name: Verisk Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:59.000Z",
+    "updatedAt": "2026-07-28T03:26:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8e75ea22-c948-470a-ab39-442ffc00589b"
+  },
+  "item": [
+    {
+      "name": "property",
+      "item": [
+        {
+          "name": "risk",
+          "item": [
+            {
+              "name": "{propertyId}",
+              "item": [
+                {
+                  "name": "Verisk Get Property Risk Assessment",
+                  "id": "232c492d-3efe-433d-9520-bc9124c2777a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/property/risk/:propertyId?includePerils=FLOOD&includePerils=WIND&asOfDate=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "property",
+                        "risk",
+                        ":propertyId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Peril types to include in response",
+                          "key": "includePerils",
+                          "value": "FLOOD"
+                        },
+                        {
+                          "description": "Peril types to include in response",
+                          "key": "includePerils",
+                          "value": "WIND"
+                        },
+                        {
+                          "description": "Historical risk assessment date",
+                          "key": "asOfDate",
+                          "value": "<date>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2cd84f8c-07c7-4496-923c-9430d6e8882b",
+                          "key": "propertyId",
+                          "value": "<string>",
+                          "description": "(Required) Property identifier (address or ISO property ID)"
+                        }
+                      ]
+                    },
+                    "description": "Returns comprehensive risk data for a specific property including construction, occupancy, fire protection class, ISO rating, and hazard scores for fire, wind, hail, flood, and earthquake exposures."
+                  },
+                  "response": [
+                    {
+                      "id": "cf064ee6-cb87-4e2a-a9f0-750b9169c8f2",
+                      "name": "Property risk assessment",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/property/risk/:propertyId?includePerils=WIND&asOfDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "property",
+                            "risk",
+                            ":propertyId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Peril types to include in response",
+                              "key": "includePerils",
+                              "value": "WIND"
+                            },
+                            {
+                              "description": "Historical risk assessment date",
+                              "key": "asOfDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"propertyId\": \"<string>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"FH\",\n    \"zipCode\": \"<string>\",\n    \"country\": \"US\"\n  },\n  \"coordinates\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"construction\": {\n    \"yearBuilt\": \"<integer>\",\n    \"squareFootage\": \"<integer>\",\n    \"stories\": \"<integer>\",\n    \"constructionType\": \"MODIFIED_FIRE_RESISTIVE\",\n    \"roofType\": \"<string>\",\n    \"occupancyType\": \"RESIDENTIAL\",\n    \"buildingCode\": \"<string>\"\n  },\n  \"fireProtection\": {\n    \"ppcGrade\": \"<integer>\",\n    \"splitCode\": \"<string>\",\n    \"fireDistrictName\": \"<string>\",\n    \"distanceToFireStation\": \"<number>\",\n    \"distanceToHydrant\": \"<number>\",\n    \"communityName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"lastSurveyDate\": \"<date>\"\n  },\n  \"perilScores\": {\n    \"sint1f\": {\n      \"score\": \"<integer>\",\n      \"riskCategory\": \"HIGH\",\n      \"description\": \"<string>\"\n    }\n  },\n  \"lastUpdated\": \"<date>\"\n}",
+                      "createdAt": "2026-07-28T03:26:59.000Z",
+                      "updatedAt": "2026-07-28T03:26:59.000Z",
+                      "uid": "35240-cf064ee6-cb87-4e2a-a9f0-750b9169c8f2"
+                    },
+                    {
+                      "id": "a0ab0fbc-50bd-4914-9a11-22574e7f7cda",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/property/risk/:propertyId?includePerils=WIND&asOfDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "property",
+                            "risk",
+                            ":propertyId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Peril types to include in response",
+                              "key": "includePerils",
+                              "value": "WIND"
+                            },
+                            {
+                              "description": "Historical risk assessment date",
+                              "key": "asOfDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:26:59.000Z",
+                      "updatedAt": "2026-07-28T03:26:59.000Z",
+                      "uid": "35240-a0ab0fbc-50bd-4914-9a11-22574e7f7cda"
+                    },
+                    {
+                      "id": "88c1f5b6-5bf0-4bc7-8609-daddb71f29af",
+                      "name": "Property not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/property/risk/:propertyId?includePerils=WIND&asOfDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "property",
+                            "risk",
+                            ":propertyId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Peril types to include in response",
+                              "key": "includePerils",
+                              "value": "WIND"
+                            },
+                            {
+                              "description": "Historical risk assessment date",
+                              "key": "asOfDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:26:59.000Z",
+                      "updatedAt": "2026-07-28T03:26:59.000Z",
+                      "uid": "35240-88c1f5b6-5bf0-4bc7-8609-daddb71f29af"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:26:59.000Z",
+                  "updatedAt": "2026-07-28T03:26:59.000Z",
+                  "uid": "35240-232c492d-3efe-433d-9520-bc9124c2777a"
+                }
+              ],
+              "id": "48aeb4c5-463a-40f4-aa48-00c5c6c63f94",
+              "createdAt": "2026-07-28T03:26:59.000Z",
+              "updatedAt": "2026-07-28T03:26:59.000Z",
+              "uid": "35240-48aeb4c5-463a-40f4-aa48-00c5c6c63f94"
+            }
+          ],
+          "id": "65b50d75-43d2-4f76-a89a-3c5b33411144",
+          "createdAt": "2026-07-28T03:26:59.000Z",
+          "updatedAt": "2026-07-28T03:26:59.000Z",
+          "uid": "35240-65b50d75-43d2-4f76-a89a-3c5b33411144"
+        },
+        {
+          "name": "lookup",
+          "item": [
+            {
+              "name": "Verisk Look Up Property by Address",
+              "id": "9316c9c3-697c-406f-ac64-57175e0c72c2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"streetAddress\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"IL\",\n  \"zipCode\": \"<string>\",\n  \"includeRiskData\": true,\n  \"includePerils\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/property/lookup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "property",
+                    "lookup"
+                  ]
+                },
+                "description": "Resolves a street address to a property record and returns risk data. Supports geocoding to USGS coordinates and ISO property identification."
+              },
+              "response": [
+                {
+                  "id": "e6f771c3-4820-4ef1-b15a-0d321f15a146",
+                  "name": "Property lookup result",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"streetAddress\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"IL\",\n  \"zipCode\": \"<string>\",\n  \"includeRiskData\": true,\n  \"includePerils\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/property/lookup",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "property",
+                        "lookup"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"matchQuality\": \"ZIP_CENTROID\",\n  \"propertyId\": \"<string>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"FE\",\n    \"zipCode\": \"<string>\",\n    \"country\": \"US\"\n  },\n  \"coordinates\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"riskData\": {\n    \"propertyId\": \"<string>\",\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"XE\",\n      \"zipCode\": \"<string>\",\n      \"country\": \"US\"\n    },\n    \"coordinates\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    },\n    \"construction\": {\n      \"yearBuilt\": \"<integer>\",\n      \"squareFootage\": \"<integer>\",\n      \"stories\": \"<integer>\",\n      \"constructionType\": \"FRAME\",\n      \"roofType\": \"<string>\",\n      \"occupancyType\": \"INDUSTRIAL\",\n      \"buildingCode\": \"<string>\"\n    },\n    \"fireProtection\": {\n      \"ppcGrade\": \"<integer>\",\n      \"splitCode\": \"<string>\",\n      \"fireDistrictName\": \"<string>\",\n      \"distanceToFireStation\": \"<number>\",\n      \"distanceToHydrant\": \"<number>\",\n      \"communityName\": \"<string>\",\n      \"state\": \"<string>\",\n      \"lastSurveyDate\": \"<date>\"\n    },\n    \"perilScores\": {\n      \"eu90b\": {\n        \"score\": \"<integer>\",\n        \"riskCategory\": \"VERY_LOW\",\n        \"description\": \"<string>\"\n      }\n    },\n    \"lastUpdated\": \"<date>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:26:59.000Z",
+                  "updatedAt": "2026-07-28T03:26:59.000Z",
+                  "uid": "35240-e6f771c3-4820-4ef1-b15a-0d321f15a146"
+                },
+                {
+                  "id": "cafdb0fb-cdc7-4b84-97a9-fd4a49d8667b",
+                  "name": "Invalid address format",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"streetAddress\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"IL\",\n  \"zipCode\": \"<string>\",\n  \"includeRiskData\": true,\n  \"includePerils\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/property/lookup",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "property",
+                        "lookup"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:26:59.000Z",
+                  "updatedAt": "2026-07-28T03:26:59.000Z",
+                  "uid": "35240-cafdb0fb-cdc7-4b84-97a9-fd4a49d8667b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:26:59.000Z",
+              "updatedAt": "2026-07-28T03:26:59.000Z",
+              "uid": "35240-9316c9c3-697c-406f-ac64-57175e0c72c2"
+            }
+          ],
+          "id": "fe14c7ff-ad7d-48a2-ac5d-46a82ad837f0",
+          "createdAt": "2026-07-28T03:26:59.000Z",
+          "updatedAt": "2026-07-28T03:26:59.000Z",
+          "uid": "35240-fe14c7ff-ad7d-48a2-ac5d-46a82ad837f0"
+        }
+      ],
+      "id": "d1c5074a-f2b5-4239-ad22-d44da5ec79ba",
+      "createdAt": "2026-07-28T03:26:59.000Z",
+      "updatedAt": "2026-07-28T03:26:59.000Z",
+      "uid": "35240-d1c5074a-f2b5-4239-ad22-d44da5ec79ba"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.verisk.com/insurance/v1"
+    }
+  ]
+}

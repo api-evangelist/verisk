@@ -1,0 +1,269 @@
+{
+  "info": {
+    "_postman_id": "48f25a58-a2fe-498d-b0c6-395bd59bac44",
+    "name": "Verisk Insurance Analytics Catastrophe Risk Scoring API",
+    "description": "Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.\n\nContact Support:\n Name: Verisk Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:59.000Z",
+    "updatedAt": "2026-07-28T03:27:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-48f25a58-a2fe-498d-b0c6-395bd59bac44"
+  },
+  "item": [
+    {
+      "name": "risk",
+      "item": [
+        {
+          "name": "scores",
+          "item": [
+            {
+              "name": "Verisk Get Insurance Risk Scores",
+              "id": "d657f50f-8058-43ec-9af1-4dbe006cf34c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    {\n      \"locationId\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"MY\",\n        \"zipCode\": \"<string>\",\n        \"country\": \"US\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      }\n    },\n    {\n      \"locationId\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"OD\",\n        \"zipCode\": \"<string>\",\n        \"country\": \"US\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      }\n    }\n  ],\n  \"scoreTypes\": [\n    \"FIRE_PROTECTION_CLASS\",\n    \"WIND_ZONE\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/risk/scores",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "risk",
+                    "scores"
+                  ]
+                },
+                "description": "Returns risk scores for properties, policies, or portfolios. Includes ISO fire protection classification, building code effectiveness grading, and commercial/personal lines risk scores."
+              },
+              "response": [
+                {
+                  "id": "69890e4d-2482-4394-8f86-c07416422d8a",
+                  "name": "Risk scores",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"locations\": [\n    {\n      \"locationId\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"MY\",\n        \"zipCode\": \"<string>\",\n        \"country\": \"US\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      }\n    },\n    {\n      \"locationId\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"OD\",\n        \"zipCode\": \"<string>\",\n        \"country\": \"US\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      }\n    }\n  ],\n  \"scoreTypes\": [\n    \"FIRE_PROTECTION_CLASS\",\n    \"WIND_ZONE\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/risk/scores",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "risk",
+                        "scores"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"locations\": [\n    {\n      \"locationId\": \"<string>\",\n      \"scores\": {\n        \"laboris98\": {\n          \"score\": \"<integer>\",\n          \"description\": \"<string>\"\n        },\n        \"dolore1_0\": {\n          \"score\": \"<integer>\",\n          \"description\": \"<string>\"\n        },\n        \"proident_3b\": {\n          \"score\": \"<integer>\",\n          \"description\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"locationId\": \"<string>\",\n      \"scores\": {\n        \"exercitation_4c3\": {\n          \"score\": \"<integer>\",\n          \"description\": \"<string>\"\n        },\n        \"dolore_ffc\": {\n          \"score\": \"<integer>\",\n          \"description\": \"<string>\"\n        },\n        \"voluptate_5\": {\n          \"score\": \"<integer>\",\n          \"description\": \"<string>\"\n        },\n        \"iruref_c\": {\n          \"score\": \"<integer>\",\n          \"description\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:27:00.000Z",
+                  "updatedAt": "2026-07-28T03:27:00.000Z",
+                  "uid": "35240-69890e4d-2482-4394-8f86-c07416422d8a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:27:00.000Z",
+              "updatedAt": "2026-07-28T03:27:00.000Z",
+              "uid": "35240-d657f50f-8058-43ec-9af1-4dbe006cf34c"
+            }
+          ],
+          "id": "325b01b7-6443-42ab-a98b-fd2426d95c0e",
+          "createdAt": "2026-07-28T03:27:00.000Z",
+          "updatedAt": "2026-07-28T03:27:00.000Z",
+          "uid": "35240-325b01b7-6443-42ab-a98b-fd2426d95c0e"
+        },
+        {
+          "name": "fire-protection-class",
+          "item": [
+            {
+              "name": "Verisk Get ISO Fire Protection Class (PPC)",
+              "id": "5860ae8f-dcf9-449f-81b6-40ae09184a46",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/risk/fire-protection-class?latitude=<number>&longitude=<number>&constructionType=FIRE_RESISTIVE",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "risk",
+                    "fire-protection-class"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "ISO construction class",
+                      "key": "constructionType",
+                      "value": "FIRE_RESISTIVE"
+                    }
+                  ]
+                },
+                "description": "Returns the ISO Public Protection Classification (PPC) grade for a location, which measures a community's fire suppression capability. PPC grades range from 1 (best) to 10."
+              },
+              "response": [
+                {
+                  "id": "c916f58c-3f91-46f2-ad07-7a8c3547491f",
+                  "name": "Fire protection class data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/risk/fire-protection-class?latitude=<number>&longitude=<number>&constructionType=FIRE_RESISTIVE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "risk",
+                        "fire-protection-class"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "latitude",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "longitude",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "ISO construction class",
+                          "key": "constructionType",
+                          "value": "FIRE_RESISTIVE"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ppcGrade\": \"<integer>\",\n  \"splitCode\": \"<string>\",\n  \"fireDistrictName\": \"<string>\",\n  \"distanceToFireStation\": \"<number>\",\n  \"distanceToHydrant\": \"<number>\",\n  \"communityName\": \"<string>\",\n  \"state\": \"<string>\",\n  \"lastSurveyDate\": \"<date>\"\n}",
+                  "createdAt": "2026-07-28T03:27:00.000Z",
+                  "updatedAt": "2026-07-28T03:27:00.000Z",
+                  "uid": "35240-c916f58c-3f91-46f2-ad07-7a8c3547491f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:27:00.000Z",
+              "updatedAt": "2026-07-28T03:27:00.000Z",
+              "uid": "35240-5860ae8f-dcf9-449f-81b6-40ae09184a46"
+            }
+          ],
+          "id": "5dd38cd3-5243-4f3c-916c-3c36c72445cb",
+          "createdAt": "2026-07-28T03:27:00.000Z",
+          "updatedAt": "2026-07-28T03:27:00.000Z",
+          "uid": "35240-5dd38cd3-5243-4f3c-916c-3c36c72445cb"
+        }
+      ],
+      "id": "3d0a694c-b725-4d0d-99af-56ff67749d46",
+      "createdAt": "2026-07-28T03:27:00.000Z",
+      "updatedAt": "2026-07-28T03:27:00.000Z",
+      "uid": "35240-3d0a694c-b725-4d0d-99af-56ff67749d46"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.verisk.com/insurance/v1"
+    }
+  ]
+}
