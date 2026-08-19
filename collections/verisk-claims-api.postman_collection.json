@@ -1,0 +1,161 @@
+{
+  "item": [
+    {
+      "id": "15583427-983d-4345-ac47-3cc89dbe8d8d",
+      "name": "Claims",
+      "description": {
+        "content": "Claims analytics and benchmarking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f5ddf54-b8f7-4222-9949-ced6117c2373",
+          "name": "Verisk Get Claims Benchmarking Data",
+          "request": {
+            "name": "Verisk Get Claims Benchmarking Data",
+            "description": {
+              "content": "Returns industry claims benchmarking data for loss frequency, loss severity, and combined ratio metrics across lines of business, states, and risk segments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims",
+                "benchmarks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lineOfBusiness",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "US state code"
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "metricType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "488e031d-7206-4ea2-80d1-22aa000d1dd6",
+              "name": "Claims benchmarking metrics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims",
+                    "benchmarks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lineOfBusiness",
+                      "value": "HOMEOWNERS"
+                    },
+                    {
+                      "key": "state",
+                      "value": "CA"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    },
+                    {
+                      "key": "metricType",
+                      "value": "FREQUENCY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lineOfBusiness\": \"example-value\",\n  \"state\": \"CA\",\n  \"year\": 2025,\n  \"metrics\": {},\n  \"sampleSize\": 100,\n  \"source\": \"Verisk ISO\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.verisk.com/insurance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b3f21710-f5e6-4191-b28b-36d7985f9836",
+    "name": "Verisk Insurance Analytics Catastrophe Claims API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.\n\nContact Support:\n Name: Verisk Support",
+      "type": "text/plain"
+    }
+  }
+}

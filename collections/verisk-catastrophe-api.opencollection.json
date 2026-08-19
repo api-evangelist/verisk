@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verisk Insurance Analytics Catastrophe API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catastrophe",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verisk Get Catastrophe Peril Scores",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.verisk.com/insurance/v1/catastrophe/peril-scores",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns catastrophe exposure scores for natural hazard perils including hurricane, tornado, hail, wildfire, earthquake, and flood for a list of locations. Used for catastrophe risk management and PML estimation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

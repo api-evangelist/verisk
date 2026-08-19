@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verisk Insurance Analytics Catastrophe Risk Scoring API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Risk Scoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verisk Get Insurance Risk Scores",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.verisk.com/insurance/v1/risk/scores",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns risk scores for properties, policies, or portfolios. Includes ISO fire protection classification, building code effectiveness grading, and commercial/personal lines risk scores."
+        },
+        {
+          "info": {
+            "name": "Verisk Get ISO Fire Protection Class (PPC)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.verisk.com/insurance/v1/risk/fire-protection-class",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "36.1699",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "-115.1398",
+                "type": "query"
+              },
+              {
+                "name": "constructionType",
+                "value": "FRAME",
+                "type": "query",
+                "description": "ISO construction class"
+              }
+            ]
+          },
+          "docs": "Returns the ISO Public Protection Classification (PPC) grade for a location, which measures a community's fire suppression capability. PPC grades range from 1 (best) to 10."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

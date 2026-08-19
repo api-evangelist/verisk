@@ -6,5 +6,14 @@
     "source_type": "Portal",
     "file": "verisk-2026-06-20T200935.png",
     "bytes": 21803
+  },
+  {
+    "repo": "verisk",
+    "captured_at": "2026-08-17T082751",
+    "source_url": "https://gateway-documentation.verisk.com/",
+    "source_type": "Portal",
+    "file": "verisk-2026-08-17T082751.png",
+    "bytes": 21622,
+    "capture": "playwright-local"
   }
 ]

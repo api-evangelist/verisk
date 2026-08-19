@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verisk Insurance Analytics Catastrophe Claims API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verisk Get Claims Benchmarking Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.verisk.com/insurance/v1/claims/benchmarks",
+            "params": [
+              {
+                "name": "lineOfBusiness",
+                "value": "HOMEOWNERS",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "CA",
+                "type": "query",
+                "description": "US state code"
+              },
+              {
+                "name": "year",
+                "value": "2025",
+                "type": "query"
+              },
+              {
+                "name": "metricType",
+                "value": "FREQUENCY",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns industry claims benchmarking data for loss frequency, loss severity, and combined ratio metrics across lines of business, states, and risk segments."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

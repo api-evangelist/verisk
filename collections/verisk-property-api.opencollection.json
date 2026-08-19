@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verisk Insurance Analytics Catastrophe Property API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Property",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verisk Get Property Risk Assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.verisk.com/insurance/v1/property/risk/:propertyId",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "PROP-123456",
+                "type": "path",
+                "description": "Property identifier (address or ISO property ID)"
+              },
+              {
+                "name": "includePerils",
+                "value": "",
+                "type": "query",
+                "description": "Peril types to include in response"
+              },
+              {
+                "name": "asOfDate",
+                "value": "2025-03-15",
+                "type": "query",
+                "description": "Historical risk assessment date"
+              }
+            ]
+          },
+          "docs": "Returns comprehensive risk data for a specific property including construction, occupancy, fire protection class, ISO rating, and hazard scores for fire, wind, hail, flood, and earthquake exposures."
+        },
+        {
+          "info": {
+            "name": "Verisk Look Up Property by Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.verisk.com/insurance/v1/property/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolves a street address to a property record and returns risk data. Supports geocoding to USGS coordinates and ISO property identification."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

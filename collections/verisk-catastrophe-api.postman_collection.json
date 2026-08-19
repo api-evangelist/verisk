@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "da6c4e63-5c58-473c-9d4f-224c0ef36031",
+      "name": "Catastrophe",
+      "description": {
+        "content": "Catastrophe modeling and peril data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80ed32be-99b5-4d1d-8399-d467366e5575",
+          "name": "Verisk Get Catastrophe Peril Scores",
+          "request": {
+            "name": "Verisk Get Catastrophe Peril Scores",
+            "description": {
+              "content": "Returns catastrophe exposure scores for natural hazard perils including hurricane, tornado, hail, wildfire, earthquake, and flood for a list of locations. Used for catastrophe risk management and PML estimation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catastrophe",
+                "peril-scores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locations\": [\n    {\n      \"locationId\": \"<string>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    },\n    {\n      \"locationId\": \"<string>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  ],\n  \"perils\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c96c43b-b65f-4e9f-ab3d-68cc91940434",
+              "name": "Peril exposure scores",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catastrophe",
+                    "peril-scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [],\n  \"perils\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"locations\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.verisk.com/insurance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e8136d6b-319d-4d51-b9e0-4e8f9d07bbaa",
+    "name": "Verisk Insurance Analytics Catastrophe API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.\n\nContact Support:\n Name: Verisk Support",
+      "type": "text/plain"
+    }
+  }
+}
