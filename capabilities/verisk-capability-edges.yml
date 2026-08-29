@@ -1,0 +1,38 @@
+slug: verisk
+provider: Verisk
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Insurance
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Catastrophe
+  spec_file: verisk-catastrophe-api-openapi.yml
+  capability_id: BC-2180.60
+  capability_id_l1: BC-2180
+  capability_name: Catastrophe Modelling
+  confidence: 0.78
+  evidence: POST /catastrophe/peril-scores  getPerilScores  "Verisk Get Catastrophe Peril Scores"; schemas
+    `PerilScoreRequest`, `PerilScoreResponse`; "catastrophe modeling ... for insurance pricing, reserving,
+    and exposure management"
+  reason: Returns per-location catastrophe peril scores, i.e. vendor catastrophe model output over exposure
+    data, which is catastrophe modelling support. Some residual ambiguity with accumulation/CAT risk monitoring
+    (BC-2190.20), hence not maximal confidence.
+- tag: Risk Scoring
+  spec_file: verisk-risk-scoring-api-openapi.yml
+  capability_id: BC-2130.20
+  capability_id_l1: BC-2130
+  capability_name: Risk Assessment & Selection
+  confidence: 0.75
+  evidence: POST /risk/scores  getRiskScores  "Verisk Get Insurance Risk Scores"; GET /risk/fire-protection-class  "Verisk
+    Get ISO Fire Protection Class (PPC)"; schemas `RiskScoreRequest`, `RiskScoreResponse`
+  reason: Produces insurance risk scores and ISO fire-protection classifications for a risk location —
+    risk scoring and selection input for underwriting. Slight ambiguity with underwriting risk intake/data
+    enrichment keeps this below 0.8.

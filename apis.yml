@@ -331,6 +331,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/verisk-capability-edges.yml
+    name: Verisk Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/verisk/overview
   - type: AgenticAccess
