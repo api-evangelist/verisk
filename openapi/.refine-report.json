@@ -1,10 +1,7 @@
 {
   "provider": "verisk",
   "sources": [
-    "verisk-catastrophe-api-openapi.yml",
-    "verisk-claims-api-openapi.yml",
-    "verisk-property-api-openapi.yml",
-    "verisk-risk-scoring-api-openapi.yml"
+    "_original/verisk-insurance-analytics-openapi.yml"
   ],
   "outputs": [
     "verisk-catastrophe-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "verisk-insurance-analytics-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "verisk-catastrophe-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "verisk-claims-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "verisk-property-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "verisk-risk-scoring-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

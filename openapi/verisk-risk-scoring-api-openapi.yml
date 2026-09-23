@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Verisk Insurance Analytics Catastrophe Risk Scoring API
+  title: Verisk Insurance Analytics Risk Scoring API
   description: Verisk (formerly ISO) provides insurance risk scoring, actuarial data, and property analytics APIs for P&C insurance carriers. APIs deliver loss cost data, risk classification, catastrophe modeling, property data, claims analytics, and underwriting data services for insurance pricing, reserving, and exposure management.
   version: '1.0'
   contact:
@@ -113,36 +113,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RiskScoreRequest:
-      type: object
-      required:
-      - locations
-      - scoreTypes
-      properties:
-        locations:
-          type: array
-          maxItems: 100
-          items:
-            type: object
-            properties:
-              locationId:
-                type: string
-              address:
-                $ref: '#/components/schemas/Address'
-              coordinates:
-                $ref: '#/components/schemas/Coordinates'
-          example: []
-        scoreTypes:
-          type: array
-          items:
-            type: string
-            enum:
-            - FIRE_PROTECTION_CLASS
-            - BUILDING_CODE_EFFECTIVENESS
-            - FLOOD_ZONE
-            - EARTHQUAKE_ZONE
-            - WIND_ZONE
-          example: []
     FireProtectionClass:
       type: object
       properties:
@@ -177,6 +147,69 @@ components:
           type: string
           format: date
           example: '2025-03-15'
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 123 Main St
+        city:
+          type: string
+          example: San Francisco
+        state:
+          type: string
+          pattern: ^[A-Z]{2}$
+          example: CA
+        zipCode:
+          type: string
+          example: '94105'
+        country:
+          type: string
+          default: US
+          example: US
+    RiskScoreRequest:
+      type: object
+      required:
+      - locations
+      - scoreTypes
+      properties:
+        locations:
+          type: array
+          maxItems: 100
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              address:
+                $ref: '#/components/schemas/Address'
+              coordinates:
+                $ref: '#/components/schemas/Coordinates'
+          example: []
+        scoreTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - FIRE_PROTECTION_CLASS
+            - BUILDING_CODE_EFFECTIVENESS
+            - FLOOD_ZONE
+            - EARTHQUAKE_ZONE
+            - WIND_ZONE
+          example: []
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          minimum: -90
+          maximum: 90
+          example: 36.1699
+        longitude:
+          type: number
+          minimum: -180
+          maximum: 180
+          example: -115.1398
     RiskScoreResponse:
       type: object
       properties:
@@ -200,39 +233,6 @@ components:
                     description:
                       type: string
           example: []
-    Address:
-      type: object
-      properties:
-        street:
-          type: string
-          example: 123 Main St
-        city:
-          type: string
-          example: San Francisco
-        state:
-          type: string
-          pattern: ^[A-Z]{2}$
-          example: CA
-        zipCode:
-          type: string
-          example: '94105'
-        country:
-          type: string
-          default: US
-          example: US
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          type: number
-          minimum: -90
-          maximum: 90
-          example: 36.1699
-        longitude:
-          type: number
-          minimum: -180
-          maximum: 180
-          example: -115.1398
   securitySchemes:
     BearerAuth:
       type: http
