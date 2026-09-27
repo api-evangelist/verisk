@@ -189,40 +189,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FireProtectionClass:
-      type: object
-      properties:
-        ppcGrade:
-          type: integer
-          minimum: 1
-          maximum: 10
-          description: ISO Public Protection Classification grade
-          example: 4
-        splitCode:
-          type: string
-          description: Split code (e.g., 4/9 for split classification)
-          example: example-value
-        fireDistrictName:
-          type: string
-          example: Sample Name
-        distanceToFireStation:
-          type: number
-          description: Distance to nearest responding fire station in miles
-          example: 0.8
-        distanceToHydrant:
-          type: number
-          description: Distance to nearest fire hydrant in feet
-          example: 0.8
-        communityName:
-          type: string
-          example: Sample Name
-        state:
-          type: string
-          example: CA
-        lastSurveyDate:
-          type: string
-          format: date
-          example: '2025-03-15'
     Address:
       type: object
       properties:
@@ -243,105 +209,6 @@ components:
           type: string
           default: US
           example: US
-    AddressLookupRequest:
-      type: object
-      required:
-      - streetAddress
-      - city
-      - state
-      properties:
-        streetAddress:
-          type: string
-          example: 123 Main St
-        city:
-          type: string
-          example: San Francisco
-        state:
-          type: string
-          pattern: ^[A-Z]{2}$
-          example: CA
-        zipCode:
-          type: string
-          example: '94105'
-        includeRiskData:
-          type: boolean
-          default: true
-          example: true
-        includePerils:
-          type: array
-          items:
-            type: string
-          example: []
-    ConstructionData:
-      type: object
-      properties:
-        yearBuilt:
-          type: integer
-          example: 2025
-        squareFootage:
-          type: integer
-          example: 100
-        stories:
-          type: integer
-          example: 100
-        constructionType:
-          type: string
-          enum:
-          - FRAME
-          - MASONRY
-          - FIRE_RESISTIVE
-          - MODIFIED_FIRE_RESISTIVE
-          - JOISTED_MASONRY
-          - NON_COMBUSTIBLE
-          example: FRAME
-        roofType:
-          type: string
-          example: FRAME
-        occupancyType:
-          type: string
-          enum:
-          - RESIDENTIAL
-          - COMMERCIAL
-          - INDUSTRIAL
-          - MIXED_USE
-          example: RESIDENTIAL
-        buildingCode:
-          type: string
-          description: Applicable building code version
-          example: example-value
-    PropertyLookupResponse:
-      type: object
-      properties:
-        matchQuality:
-          type: string
-          enum:
-          - EXACT
-          - INTERPOLATED
-          - ZIP_CENTROID
-          - CITY_CENTROID
-          example: EXACT
-        propertyId:
-          type: string
-          example: PROP-123456
-        address:
-          $ref: '#/components/schemas/Address'
-        coordinates:
-          $ref: '#/components/schemas/Coordinates'
-        riskData:
-          $ref: '#/components/schemas/PropertyRisk'
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          type: number
-          minimum: -90
-          maximum: 90
-          example: 36.1699
-        longitude:
-          type: number
-          minimum: -180
-          maximum: 180
-          example: -115.1398
     PropertyRisk:
       type: object
       properties:
@@ -381,6 +248,139 @@ components:
           type: string
           format: date
           example: '2025-03-15'
+    PropertyLookupResponse:
+      type: object
+      properties:
+        matchQuality:
+          type: string
+          enum:
+          - EXACT
+          - INTERPOLATED
+          - ZIP_CENTROID
+          - CITY_CENTROID
+          example: EXACT
+        propertyId:
+          type: string
+          example: PROP-123456
+        address:
+          $ref: '#/components/schemas/Address'
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        riskData:
+          $ref: '#/components/schemas/PropertyRisk'
+    ConstructionData:
+      type: object
+      properties:
+        yearBuilt:
+          type: integer
+          example: 2025
+        squareFootage:
+          type: integer
+          example: 100
+        stories:
+          type: integer
+          example: 100
+        constructionType:
+          type: string
+          enum:
+          - FRAME
+          - MASONRY
+          - FIRE_RESISTIVE
+          - MODIFIED_FIRE_RESISTIVE
+          - JOISTED_MASONRY
+          - NON_COMBUSTIBLE
+          example: FRAME
+        roofType:
+          type: string
+          example: FRAME
+        occupancyType:
+          type: string
+          enum:
+          - RESIDENTIAL
+          - COMMERCIAL
+          - INDUSTRIAL
+          - MIXED_USE
+          example: RESIDENTIAL
+        buildingCode:
+          type: string
+          description: Applicable building code version
+          example: example-value
+    FireProtectionClass:
+      type: object
+      properties:
+        ppcGrade:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: ISO Public Protection Classification grade
+          example: 4
+        splitCode:
+          type: string
+          description: Split code (e.g., 4/9 for split classification)
+          example: example-value
+        fireDistrictName:
+          type: string
+          example: Sample Name
+        distanceToFireStation:
+          type: number
+          description: Distance to nearest responding fire station in miles
+          example: 0.8
+        distanceToHydrant:
+          type: number
+          description: Distance to nearest fire hydrant in feet
+          example: 0.8
+        communityName:
+          type: string
+          example: Sample Name
+        state:
+          type: string
+          example: CA
+        lastSurveyDate:
+          type: string
+          format: date
+          example: '2025-03-15'
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          minimum: -90
+          maximum: 90
+          example: 36.1699
+        longitude:
+          type: number
+          minimum: -180
+          maximum: 180
+          example: -115.1398
+    AddressLookupRequest:
+      type: object
+      required:
+      - streetAddress
+      - city
+      - state
+      properties:
+        streetAddress:
+          type: string
+          example: 123 Main St
+        city:
+          type: string
+          example: San Francisco
+        state:
+          type: string
+          pattern: ^[A-Z]{2}$
+          example: CA
+        zipCode:
+          type: string
+          example: '94105'
+        includeRiskData:
+          type: boolean
+          default: true
+          example: true
+        includePerils:
+          type: array
+          items:
+            type: string
+          example: []
   securitySchemes:
     BearerAuth:
       type: http
