@@ -136,56 +136,6 @@ components:
                     description:
                       type: string
           example: []
-    Address:
-      type: object
-      properties:
-        street:
-          type: string
-          example: 123 Main St
-        city:
-          type: string
-          example: San Francisco
-        state:
-          type: string
-          pattern: ^[A-Z]{2}$
-          example: CA
-        zipCode:
-          type: string
-          example: '94105'
-        country:
-          type: string
-          default: US
-          example: US
-    RiskScoreRequest:
-      type: object
-      required:
-      - locations
-      - scoreTypes
-      properties:
-        locations:
-          type: array
-          maxItems: 100
-          items:
-            type: object
-            properties:
-              locationId:
-                type: string
-              address:
-                $ref: '#/components/schemas/Address'
-              coordinates:
-                $ref: '#/components/schemas/Coordinates'
-          example: []
-        scoreTypes:
-          type: array
-          items:
-            type: string
-            enum:
-            - FIRE_PROTECTION_CLASS
-            - BUILDING_CODE_EFFECTIVENESS
-            - FLOOD_ZONE
-            - EARTHQUAKE_ZONE
-            - WIND_ZONE
-          example: []
     FireProtectionClass:
       type: object
       properties:
@@ -220,6 +170,56 @@ components:
           type: string
           format: date
           example: '2025-03-15'
+    RiskScoreRequest:
+      type: object
+      required:
+      - locations
+      - scoreTypes
+      properties:
+        locations:
+          type: array
+          maxItems: 100
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              address:
+                $ref: '#/components/schemas/Address'
+              coordinates:
+                $ref: '#/components/schemas/Coordinates'
+          example: []
+        scoreTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - FIRE_PROTECTION_CLASS
+            - BUILDING_CODE_EFFECTIVENESS
+            - FLOOD_ZONE
+            - EARTHQUAKE_ZONE
+            - WIND_ZONE
+          example: []
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 123 Main St
+        city:
+          type: string
+          example: San Francisco
+        state:
+          type: string
+          pattern: ^[A-Z]{2}$
+          example: CA
+        zipCode:
+          type: string
+          example: '94105'
+        country:
+          type: string
+          default: US
+          example: US
     Coordinates:
       type: object
       properties:
