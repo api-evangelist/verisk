@@ -34,7 +34,7 @@ description: >-
   management workflows.
 url: https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/apis.yml
 created: '2026-05-03'
-modified: '2026-05-19'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 tags:
   - Insurance
@@ -332,6 +332,8 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld
 common:
+  - url: https://www.verisk.com/blog/
+    type: Blog
   - type: CapabilityMap
     url: capabilities/verisk-capability-edges.yml
     name: Verisk Business Capability Map
