@@ -41,3 +41,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: verisk-servicetitan-own
+  label: ServiceTitan (own)
+  partner: servicetitan
+  partner_name: ServiceTitan (own)
+  category: On-The-Job
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.servicetitan.com/partner/verisk
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

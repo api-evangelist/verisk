@@ -4,6 +4,7 @@ checked:
 - duck-creek/integrations/duck-creek-integration-edges.yml
 - geotab/integrations/geotab-integration-edges.yml
 - guidewire/integrations/guidewire-integration-edges.yml
+- servicetitan/integrations/servicetitan-integration-edges.yml
 source:
 - duck-creek/integrations/duck-creek-integration-edges.yml
 - geotab/integrations/geotab-integration-edges.yml
@@ -86,3 +87,20 @@ edges:
   badges:
   - Ready for Guidewire
   - 'Partner tier: Premier'
+- partner_name: ServiceTitan (own)
+  partner: servicetitan
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.servicetitan.com/partner/verisk
+  mirror_of: servicetitan/integrations/servicetitan-integration-edges.yml
+  apps:
+  - Verisk (Xactimate™)
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: On-The-Job
