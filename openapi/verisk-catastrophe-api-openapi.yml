@@ -57,37 +57,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PerilScoreResponse:
-      type: object
-      properties:
-        locations:
-          type: array
-          items:
-            type: object
-            properties:
-              locationId:
-                type: string
-              perils:
-                type: object
-                additionalProperties:
-                  type: object
-                  properties:
-                    score:
-                      type: integer
-                      minimum: 1
-                      maximum: 100
-                    riskTier:
-                      type: string
-                      enum:
-                      - TIER_1
-                      - TIER_2
-                      - TIER_3
-                      - TIER_4
-                      - TIER_5
-                    annualExceedanceProbability:
-                      type: number
-                      description: Annual probability of loss event
-          example: []
     PerilScoreRequest:
       type: object
       required:
@@ -119,6 +88,37 @@ components:
             - FLOOD
             - WINTER_STORM
             - LIGHTNING
+          example: []
+    PerilScoreResponse:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              locationId:
+                type: string
+              perils:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    score:
+                      type: integer
+                      minimum: 1
+                      maximum: 100
+                    riskTier:
+                      type: string
+                      enum:
+                      - TIER_1
+                      - TIER_2
+                      - TIER_3
+                      - TIER_4
+                      - TIER_5
+                    annualExceedanceProbability:
+                      type: number
+                      description: Annual probability of loss event
           example: []
   securitySchemes:
     BearerAuth:
