@@ -6,6 +6,8 @@ checked:
 - guidewire/integrations/guidewire-integration-edges.yml
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 - servicetitan/integrations/servicetitan-integration-edges.yml
+- https://app.snowflake.com/marketplace/providers
+- https://aws.amazon.com/marketplace/search/results?FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE
 source:
 - duck-creek/integrations/duck-creek-integration-edges.yml
 - geotab/integrations/geotab-integration-edges.yml
@@ -124,3 +126,60 @@ edges:
   category: Microsoft Teams app
   publisher_verified:
   - Microsoft 365 Publisher Attestation
+- partner_name: AWS Data Exchange
+  partner: amazon-data-exchange
+  partner_match: aggregator
+  type: marketplace
+  marketplace: amazon-data-exchange-marketplace
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=f9c590c8-b1f6-4079-b707-237d57755e02
+  category: data product listing
+  contract_reference:
+    register: AWS Data Exchange (AWS Marketplace discovery search, FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE + seller-profile
+      sellerWebsiteUrl)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Verisk Analytics
+    matched_domain: verisk.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - Verisk’s Distance to Coast — FREE sample of LOCATION® Distance to Coast
+    - Verisk’s Fire Protection Data — FREE sample of PPC® data
+    - Verisk’s Wildfire Risk Data — FREE sample of FireLine® data
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+  publisher_verified:
+  - Deployed on AWS
+- partner_name: Snowflake Marketplace
+  partner: snowflake
+  partner_match: aggregator
+  type: marketplace
+  marketplace: snowflake-marketplace
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://app.snowflake.com/marketplace/providers/GZSOZMU6I
+  category: data product listing
+  contract_reference:
+    register: Snowflake Marketplace providers (app.snowflake.com/marketplace/providers, rendered; names only, Wikidata
+      P856 identity step)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Verisk Analytics
+    matched_domain: verisk.com
+    matched_by: domain
+    listings: 18
+    sample_listings: []
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    identity_source: wikidata
+    identity_note: wikidata P856 verisk.com for 'Verisk Analytics' (labelled identity step)
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
