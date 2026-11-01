@@ -1,4 +1,4 @@
-# Verisk (verisk)
+# Verisk
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,110 +66,205 @@
 
 Verisk (formerly ISO) is a leading data analytics and technology company serving the insurance, energy, and financial services industries. Verisk provides risk scoring, actuarial data, property analytics, catastrophe modeling, claims benchmarking, and underwriting intelligence through RESTful APIs that power insurance pricing, reserving, and exposure management workflows.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/apis.yml)
+**Areas:** Insurance · Analytics · Risk Management · Property Data · Catastrophe Modeling · Underwriting · Claims
 
-## Tags
+## Verisk on APIs.io
 
-- Insurance
-- Analytics
-- Risk Management
-- Property Data
-- Catastrophe Modeling
-- Underwriting
-- Claims
+Everything profiled for Verisk is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/verisk/](https://apis.io/providers/verisk/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (5)
 
-- **Created:** 2026-05-03
-- **Modified:** 2026-05-19
+- [Verisk UnderWriting API](https://apis.io/apis/verisk/underwriting-api/) — Verisk UnderWriting API provides personal and commercial lines insurance underwriting data including homeowner data, motor vehicle reports, A-PLUS auto and…
+- [Verisk Catastrophe API](https://apis.io/apis/verisk/verisk-catastrophe-api/) — Catastrophe modeling and peril data
+- [Verisk Claims API](https://apis.io/apis/verisk/verisk-claims-api/) — Claims analytics and benchmarking
+- [Verisk Property API](https://apis.io/apis/verisk/verisk-property-api/) — Property risk data and analytics
+- [Verisk Risk Scoring API](https://apis.io/apis/verisk/verisk-risk-scoring-api/) — Insurance risk scores and rating factors
 
-## APIs
+### Published properties
 
-### Verisk Insurance Analytics API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Verisk Insurance Analytics API provides property risk assessments, ISO fire protection classifications, catastrophe peril scores, insurance risk scoring, and claims benchmarking data for P&C insurance carriers. Delivers loss cost data, risk classification, and underwriting data services for insurance pricing, reserving, and exposure management.
+#### Agentic access (1)
 
-- **Human URL:** [https://gateway.verisk.com/docs/MainPage.ashx](https://gateway.verisk.com/docs/MainPage.ashx)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Verisk Agentic Access](https://apis.io/agentic-access/verisk/verisk-agentic-access/)
 
-- Insurance
-- Analytics
-- Risk Management
-- Property Data
-- Catastrophe Modeling
-- Underwriting
-- Claims
+#### JSON Schema (13)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://gateway.verisk.com/docs/MainPage.ashx)
-- [Getting Started](https://gateway.verisk.com/docs/Getting-Started.ashx)
-- [Authentication](https://gateway.verisk.com/docs/Authentication.ashx)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/openapi/verisk-insurance-analytics-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-risk-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-construction-data-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-fire-protection-class-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-lookup-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-property-lookup-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-risk-score-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-peril-score-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-claims-benchmarks-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-address-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-schema/insurance-analytics-coordinates-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-property-risk-structure.json)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-construction-data-structure.json)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-fire-protection-class-structure.json)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-structure/insurance-analytics-claims-benchmarks-structure.json)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/json-ld/verisk-insurance-analytics-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Postman Collection](collections/verisk-insurance-analytics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/verisk-insurance-analytics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Address](https://apis.io/schemas/verisk/insurance-analytics-address/)
+- [AddressLookupRequest](https://apis.io/schemas/verisk/insurance-analytics-address-lookup-request/)
+- [ClaimsBenchmarks](https://apis.io/schemas/verisk/insurance-analytics-claims-benchmarks/)
+- [ConstructionData](https://apis.io/schemas/verisk/insurance-analytics-construction-data/)
+- [Coordinates](https://apis.io/schemas/verisk/insurance-analytics-coordinates/)
+- [FireProtectionClass](https://apis.io/schemas/verisk/insurance-analytics-fire-protection-class/)
+- [PerilScoreRequest](https://apis.io/schemas/verisk/insurance-analytics-peril-score-request/)
+- [PerilScoreResponse](https://apis.io/schemas/verisk/insurance-analytics-peril-score-response/)
+- [PropertyLookupResponse](https://apis.io/schemas/verisk/insurance-analytics-property-lookup-response/)
+- [PropertyRisk](https://apis.io/schemas/verisk/insurance-analytics-property-risk/)
+- [RiskScoreRequest](https://apis.io/schemas/verisk/insurance-analytics-risk-score-request/)
+- [RiskScoreResponse](https://apis.io/schemas/verisk/insurance-analytics-risk-score-response/)
+- [Verisk Property Risk Assessment](https://apis.io/schemas/verisk/verisk-property-risk/)
 
-### Verisk UnderWriting API
+#### JSON Structure (13)
 
-Verisk UnderWriting API provides personal and commercial lines insurance underwriting data including homeowner data, motor vehicle reports, A-PLUS auto and property reports, LightSpeed prefill, geocoding, ISO fire protection class, and coverage verification for P&C insurance carriers. Supports both JSON and XML response formats.
+Data models expressed in JSON Structure.
 
-- **Human URL:** [https://gateway.verisk.com/docs/MainPage.ashx](https://gateway.verisk.com/docs/MainPage.ashx)
+- [Insurance Analytics Address Lookup Request Structure](https://apis.io/json-structure/verisk/insurance-analytics-address-lookup-request-structure/)
+- [Insurance Analytics Address Structure](https://apis.io/json-structure/verisk/insurance-analytics-address-structure/)
+- [Insurance Analytics Claims Benchmarks Structure](https://apis.io/json-structure/verisk/insurance-analytics-claims-benchmarks-structure/)
+- [Insurance Analytics Construction Data Structure](https://apis.io/json-structure/verisk/insurance-analytics-construction-data-structure/)
+- [Insurance Analytics Coordinates Structure](https://apis.io/json-structure/verisk/insurance-analytics-coordinates-structure/)
+- [Insurance Analytics Fire Protection Class Structure](https://apis.io/json-structure/verisk/insurance-analytics-fire-protection-class-structure/)
+- [Insurance Analytics Peril Score Request Structure](https://apis.io/json-structure/verisk/insurance-analytics-peril-score-request-structure/)
+- [Insurance Analytics Peril Score Response Structure](https://apis.io/json-structure/verisk/insurance-analytics-peril-score-response-structure/)
+- [Insurance Analytics Property Lookup Response Structure](https://apis.io/json-structure/verisk/insurance-analytics-property-lookup-response-structure/)
+- [Insurance Analytics Property Risk Structure](https://apis.io/json-structure/verisk/insurance-analytics-property-risk-structure/)
+- [Insurance Analytics Risk Score Request Structure](https://apis.io/json-structure/verisk/insurance-analytics-risk-score-request-structure/)
+- [Insurance Analytics Risk Score Response Structure](https://apis.io/json-structure/verisk/insurance-analytics-risk-score-response-structure/)
+- [Verisk Property Risk Structure](https://apis.io/json-structure/verisk/verisk-property-risk-structure/)
 
-#### Tags
+#### JSON-LD (2)
 
-- Underwriting
-- Insurance
-- Personal Lines
-- Commercial Lines
-- Motor Vehicle
-- Property Data
+Linked-data contexts for the provider's vocabulary.
 
-#### Properties
+- [Verisk Context](https://apis.io/jsonld/verisk/verisk-context/)
+- [Verisk Insurance Analytics Context](https://apis.io/jsonld/verisk/verisk-insurance-analytics-context/)
 
-- [Documentation](https://gateway.verisk.com/docs/MainPage.ashx)
-- [Getting Started](https://gateway.verisk.com/docs/Getting-Started.ashx)
-- [Authentication](https://gateway.verisk.com/docs/Authentication.ashx)
-- [Postman Collection](collections/verisk-insurance-analytics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/verisk-insurance-analytics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Vocabulary (1)
 
-## Common Properties
+The provider's domain terms, defined.
 
-- [GitHub Organization](https://github.com/verisk)
-- [LinkedIn](https://www.linkedin.com/company/verisk-analytics)
+- [Verisk Vocabulary](https://apis.io/vocabularies/verisk/verisk-vocabulary/)
+
+#### Examples (13)
+
+Example requests and responses.
+
+- [Insurance Analytics Address Example](https://apis.io/examples/verisk/insurance-analytics-address-example/)
+- [Insurance Analytics Address Lookup Request Example](https://apis.io/examples/verisk/insurance-analytics-address-lookup-request-example/)
+- [Insurance Analytics Claims Benchmarks Example](https://apis.io/examples/verisk/insurance-analytics-claims-benchmarks-example/)
+- [Insurance Analytics Construction Data Example](https://apis.io/examples/verisk/insurance-analytics-construction-data-example/)
+- [Insurance Analytics Coordinates Example](https://apis.io/examples/verisk/insurance-analytics-coordinates-example/)
+- [Insurance Analytics Fire Protection Class Example](https://apis.io/examples/verisk/insurance-analytics-fire-protection-class-example/)
+- [Insurance Analytics Peril Score Request Example](https://apis.io/examples/verisk/insurance-analytics-peril-score-request-example/)
+- [Insurance Analytics Peril Score Response Example](https://apis.io/examples/verisk/insurance-analytics-peril-score-response-example/)
+- [Insurance Analytics Property Lookup Response Example](https://apis.io/examples/verisk/insurance-analytics-property-lookup-response-example/)
+- [Insurance Analytics Property Risk Example](https://apis.io/examples/verisk/insurance-analytics-property-risk-example/)
+- [Insurance Analytics Risk Score Request Example](https://apis.io/examples/verisk/insurance-analytics-risk-score-request-example/)
+- [Insurance Analytics Risk Score Response Example](https://apis.io/examples/verisk/insurance-analytics-risk-score-response-example/)
+- [Verisk Property Risk Example](https://apis.io/examples/verisk/verisk-property-risk-example/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Verisk Insurance Analytics Catastrophe API](https://apis.io/collections/verisk/open-verisk-catastrophe-api/)
+- [Verisk Insurance Analytics Catastrophe Claims API](https://apis.io/collections/verisk/open-verisk-claims-api/)
+- [Verisk Insurance Analytics API](https://apis.io/collections/verisk/open-verisk-insurance-analytics/)
+- [Verisk Insurance Analytics Catastrophe Property API](https://apis.io/collections/verisk/open-verisk-property-api/)
+- [Verisk Insurance Analytics Catastrophe Risk Scoring API](https://apis.io/collections/verisk/open-verisk-risk-scoring-api/)
+- [Verisk Insurance Analytics Catastrophe API](https://apis.io/collections/verisk/postman-verisk-catastrophe-api/)
+- [Verisk Insurance Analytics Catastrophe Claims API](https://apis.io/collections/verisk/postman-verisk-claims-api/)
+- [Verisk Insurance Analytics Catastrophe Property API](https://apis.io/collections/verisk/postman-verisk-property-api/)
+- [Verisk Insurance Analytics Catastrophe Risk Scoring API](https://apis.io/collections/verisk/postman-verisk-risk-scoring-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Verisk — jsonschema rules](https://apis.io/rules/verisk/verisk-jsonschema-spectral-rules/)
+- [Verisk API Rules](https://apis.io/rules/verisk/verisk-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Verisk Authentication](https://apis.io/security/verisk/verisk-authentication/)
+- [Verisk Domain Security](https://apis.io/security/verisk/verisk-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Verisk Plans Pricing](https://apis.io/plans/verisk/verisk-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Verisk Rate Limits](https://apis.io/rate-limits/verisk/verisk-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Verisk Finops](https://apis.io/finops/verisk/verisk-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.verisk.com)
-- [Portal](https://gateway-documentation.verisk.com/)
-- [API Reference](https://apicatalog.verisk.com/)
 - [Documentation](https://gateway.verisk.com/docs/MainPage.ashx)
-- [Getting Started](https://gateway.verisk.com/docs/Getting-Started.ashx)
-- [Authentication](https://gateway.verisk.com/docs/Authentication.ashx)
-- [Terms of Service](https://www.verisk.com/terms-of-use/)
-- [Privacy Policy](https://www.verisk.com/privacy-policy/)
-- [Contact](https://www.verisk.com/contact/)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/rules/verisk-spectral-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/verisk/refs/heads/main/vocabulary/verisk-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Getting started](https://gateway.verisk.com/docs/Getting-Started.ashx)
+- [API reference](https://apicatalog.verisk.com/)
+- [Blog](https://www.verisk.com/blog/)
+- [Terms of service](https://www.verisk.com/terms-of-use/)
+- [Privacy policy](https://www.verisk.com/privacy-policy/)
+- [GitHub](https://github.com/verisk)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 37.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 66.6 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 53.6 |
+| Access clarity | 5.3 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 14.9** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/verisk/](https://apis.io/providers/verisk/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Verisk: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/verisk/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
