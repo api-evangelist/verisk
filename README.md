@@ -171,11 +171,12 @@ Postman and Open Collection request collections.
 - [Verisk Insurance Analytics Catastrophe Property API](https://apis.io/collections/verisk/postman-verisk-property-api/)
 - [Verisk Insurance Analytics Catastrophe Risk Scoring API](https://apis.io/collections/verisk/postman-verisk-risk-scoring-api/)
 
-#### Governance rules (2)
+#### Governance rules (3)
 
 Spectral rulesets for the provider's contracts.
 
 - [Verisk — jsonschema rules](https://apis.io/rules/verisk/verisk-jsonschema-spectral-rules/)
+- [Verisk API Rules](https://apis.io/rules/verisk/verisk-rules/)
 - [Verisk API Rules](https://apis.io/rules/verisk/verisk-spectral-rules/)
 
 #### Security (2)
@@ -211,14 +212,15 @@ Links to the company's own pages. This repository publishes no copy of their spe
 - [Documentation](https://gateway.verisk.com/docs/MainPage.ashx)
 - [Getting started](https://gateway.verisk.com/docs/Getting-Started.ashx)
 - [API reference](https://apicatalog.verisk.com/)
+- [Pricing](https://www.verisk.com/blog/pricing-physical-damage-for-commercial-auto-in-an-era-of-inflation/)
+- [Changelog](https://www.verisk.com/resources/release-notes/anti-fraud/tags/other/)
 - [Blog](https://www.verisk.com/blog/)
-- [Terms of service](https://www.verisk.com/terms-of-use/)
-- [Privacy policy](https://www.verisk.com/privacy-policy/)
+- [Privacy policy](https://www.verisk.com/privacy-policies/)
 - [GitHub](https://github.com/verisk)
 
 ## API Evangelist rating
 
-**Kin Score 37.5** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 37.5** — thin · rubric 0.25.0 · scored 2026-10-23
 
 | Facet | Score |
 |---|---|
@@ -229,7 +231,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Developer ergonomics | 53.6 |
 | Access clarity | 5.3 |
 
-**Agent readiness 22.9** — agent-aware
+**Agent readiness 24.6** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -252,6 +254,8 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
 **Regulatory alignment 14.9** — Insurance
 
